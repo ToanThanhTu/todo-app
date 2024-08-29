@@ -2,9 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import todoService from "../services/todo";
 
-const generateId = () => {
-  return Math.round(Math.random() * 10000000);
-};
+import { generateId } from "./reducerHelper";
 
 const todoListReducer = createSlice({
   name: "todo",

@@ -6,10 +6,10 @@ import { Route } from "react-router-dom";
 
 // reducers
 import { initializeTodoList } from "./reducers/todoListReducer";
+import { initializeCategories } from "./reducers/categoryReducer";
 
 // components
 import TodoList from "./components/TodoList/TodoList";
-import TodoForm from "./components/TodoForm/TodoForm";
 import TodoItem from "./components/TodoList/TodoItem";
 import Home from "./components/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
@@ -20,22 +20,20 @@ function App() {
 
   useEffect(() => {
     dispatch(initializeTodoList());
+    dispatch(initializeCategories());
   }, [dispatch]);
 
   const todoList = useSelector((state) => state.todoList);
+  const categories = useSelector((state) => state.categories);  
 
   return (
     <main className="app">
       <NavBar />
 
       <div className="container">
-        <SideBar />
+        <SideBar categories={categories} />
 
         <div className="content">
-          <h1>ToDo App</h1>
-
-          <TodoForm />
-
           <Routes>
             <Route path="/todo/:id" element={<TodoItem />} />
             <Route path="/todo" element={<TodoList todoList={todoList} />} />

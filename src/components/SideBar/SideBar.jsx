@@ -1,6 +1,8 @@
-function SideBar() {
+import sideBarStyles from "./SideBar.module.css";
+
+function SideBar({ categories }) {
   return (
-    <div>
+    <div className={sideBarStyles.sidebar}>
       <h4>User Name</h4>
 
       <table>
@@ -18,10 +20,14 @@ function SideBar() {
         </tbody>
       </table>
 
-      <h3>Categories</h3>
-      <ul>
-        <li>Work</li>
-      </ul>
+      <div className={sideBarStyles.categories}>
+        <h3>Categories</h3>
+        <ul>
+          {categories.map((category) => (
+            <li key={category.id}>{category.name}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

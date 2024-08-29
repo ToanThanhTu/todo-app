@@ -2,15 +2,30 @@
   "todo": [
     {
       "content": "Walk the dog",
+      "category": 1,
       "id": 1
     },
     {
       "content": "Have breakfast",
+      "category": 1,
       "id": 2
     },
     {
       "content": "Go to work",
+      "category": 2,
       "id": 3
+    }
+  ],
+  "categories": [
+    {
+      "name": "Home",
+      "todos": [1, 2],
+      "id": 1
+    },
+    {
+      "name": "Work",
+      "todos": [3],
+      "id": 2
     }
   ]
 }

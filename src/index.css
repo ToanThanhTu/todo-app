@@ -10,12 +10,17 @@ body {
 }
 
 .app {
-  width: 80vw;
+  width: 70vw;
   min-width: 250px;
   margin: 0 auto;
 }
 
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
   margin-top: 50px;
+}
+
+.content {
+  padding: 0 20px;
 }
