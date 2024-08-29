@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+  border: 1px solid black;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.app {
+  width: 80vw;
+  min-width: 250px;
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  margin-top: 50px;
+}

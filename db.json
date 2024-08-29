@@ -1,0 +1,16 @@
+{
+  "todo": [
+    {
+      "content": "Walk the dog",
+      "id": 1
+    },
+    {
+      "content": "Have breakfast",
+      "id": 2
+    },
+    {
+      "content": "Go to work",
+      "id": 3
+    }
+  ]
+}
