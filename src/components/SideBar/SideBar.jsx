@@ -1,33 +1,61 @@
 import sideBarStyles from "./SideBar.module.css";
 
-function SideBar({ categories }) {
+import { STATUS } from "../../constants/statusConstants";
+import ToggleableModal from "../Modal/ToggleableModal";
+import { useRef } from "react";
+import NewCategoryForm from "../NewCategoryForm/NewCategoryForm";
+
+function SideBar({ categories, todoList }) {
+  const completedTasks = todoList.filter(
+    (item) => item.status === STATUS.COMPLETED
+  ).length;
+
+  const activeTasks = todoList.filter(
+    (item) => item.status === STATUS.ACTIVE
+  ).length;
+
+  const categoryFormRef = useRef();
+
+  const handleClose = () => {
+    categoryFormRef.current.toggleShowModal();
+  };
+
   return (
     <div className={sideBarStyles.sidebar}>
-      <h4>User Name</h4>
+      <h3>User Name</h3>
 
       <table>
         <tbody>
           <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
+            <td>{activeTasks}</td>
+            <td>{completedTasks}</td>
+            <td>{todoList.length}</td>
           </tr>
           <tr>
-            <td>To do tasks</td>
-            <td>Completed tasks</td>
-            <td>Primary tasks</td>
+            <td>Active ToDos</td>
+            <td>Completed ToDos</td>
+            <td>Total ToDos</td>
           </tr>
         </tbody>
       </table>
 
+      <h3>Categories</h3>
+
       <div className={sideBarStyles.categories}>
-        <h3>Categories</h3>
         <ul>
           {categories.map((category) => (
             <li key={category.id}>{category.name}</li>
           ))}
         </ul>
       </div>
+
+      <ToggleableModal
+        buttonName="Create new category"
+        styles={sideBarStyles.button}
+        ref={categoryFormRef}
+      >
+        <NewCategoryForm onClose={handleClose} />
+      </ToggleableModal>
     </div>
   );
 }
