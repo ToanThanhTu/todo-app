@@ -47,25 +47,31 @@ function NewTodoForm({ onClose }) {
     <form onSubmit={handleSubmit} className={newTodoStyles.modal}>
       <h1>New ToDo Task</h1>
 
-      <label htmlFor="task-content">Task content</label>
-      <input id="task-content" type="text" name="taskContent" />
-
-      <label htmlFor="taskCategory">Task category</label>
-      <select name="taskCategory" id="taskCategory">
-        {categories.map((category) => (
-          <option key={category.id} value={category.id}>
-            {category.name}
-          </option>
-        ))}
-      </select>
-
-      <label htmlFor="taskStatusSelect">Task status</label>
-      <select name="taskStatus" id="taskStatusSelect">
-        <option value={STATUS.ACTIVE}>{STATUS.ACTIVE}</option>
-        <option value={STATUS.COMPLETED}>{STATUS.COMPLETED}</option>
-      </select>
+      <div>
+        <label htmlFor="task-content">Task content:</label>
+        <input id="task-content" type="text" name="taskContent" />
+      </div>
 
       <div>
+        <label htmlFor="taskCategory">Task category:</label>
+        <select name="taskCategory" id="taskCategory">
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="taskStatusSelect">Task status:</label>
+        <select name="taskStatus" id="taskStatusSelect">
+          <option value={STATUS.ACTIVE}>{STATUS.ACTIVE}</option>
+          <option value={STATUS.COMPLETED}>{STATUS.COMPLETED}</option>
+        </select>
+      </div>
+
+      <div className="buttonsContainer">
         <button type="submit">Submit</button>
         <button type="button" onClick={onClose}>
           Close

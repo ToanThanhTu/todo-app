@@ -3,20 +3,20 @@
     {
       "content": "Walk the dog",
       "category": "1",
-      "status": "ACTIVE",
-      "id": "1"
+      "id": "1",
+      "status": "ACTIVE"
     },
     {
       "content": "Have breakfast",
       "category": "1",
-      "status": "COMPLETED",
-      "id": "2"
+      "id": "2",
+      "status": "COMPLETED"
     },
     {
       "content": "Go to work",
       "category": "2",
-      "status": "ACTIVE",
-      "id": "3"
+      "id": "3",
+      "status": "ACTIVE"
     },
     {
       "content": "Buy a blazer",
@@ -27,64 +27,60 @@
     {
       "content": "Apply for a new job",
       "category": "2",
-      "status": "CANCELLED",
-      "id": "5"
-    },
-    {
-      "id": "711",
-      "content": "Test new task",
-      "category": "986",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "723",
-      "content": "Test new task in same category",
-      "category": "986",
-      "status": "ACTIVE"
+      "id": "5",
+      "status": "CANCELLED"
     }
   ],
   "categories": [
     {
       "name": "Home",
-      "todos": ["1", "2", "131"],
+      "todos": [
+        "1",
+        "2",
+        "131"
+      ],
       "id": "1"
     },
     {
       "name": "Work",
-      "todos": ["3", "5"],
+      "todos": [
+        "3",
+        "5"
+      ],
       "id": "2"
     },
     {
       "name": "Shopping",
-      "todos": ["4"],
+      "todos": [
+        "4"
+      ],
       "id": "3"
-    },
-    {
-      "id": "986",
-      "name": "Test",
-      "todos": ["711", "723"]
     }
   ],
   "contacts": [
     {
       "name": "Email",
       "icon": "Email",
-      "url": "mailto:toantu3005@gmail.com"
+      "url": "mailto:toantu3005@gmail.com",
+      "id": "3b63"
     },
     {
       "name": "Phone",
       "icon": "Phone",
-      "url": "tel:+61403001616"
+      "url": "tel:+61403001616",
+      "id": "eb44"
     },
     {
       "name": "LinkedIn",
       "icon": "LinkedIn",
-      "url": "https://www.linkedin.com/in/thanh-toan-tu/"
+      "url": "https://www.linkedin.com/in/thanh-toan-tu/",
+      "id": "f9ed"
     },
     {
       "name": "GitHub",
       "icon": "GitHub",
-      "url": "https://github.com/ToanThanhTu"
+      "url": "https://github.com/ToanThanhTu",
+      "id": "6b5e"
     }
   ]
 }

@@ -3,34 +3,68 @@ import { STATUS } from "../../constants/statusConstants";
 import { useDispatch } from "react-redux";
 import { updateStatus } from "../../reducers/todoListReducer";
 
+import todoListStyles from "./TodoList.module.css";
+
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
+
 function TodoListItem({ item }) {
   const dispatch = useDispatch();
 
-  const setStatus = (event) => {
-    const status = event.target.value;
+  const setStatus = (status) => {
+    // const status = event.target.value;
+    console.log("set status:", status);
 
     dispatch(updateStatus(item, status));
   };
 
   return (
-    <li>
-      <Link to={`/todos/${item.id}`}>{item.content}</Link>
-      {item.status !== STATUS.ACTIVE && (
-        <button onClick={setStatus} value={STATUS.ACTIVE}>
-          Make active
-        </button>
-      )}
-      {item.status !== STATUS.COMPLETED && (
-        <button onClick={setStatus} value={STATUS.COMPLETED}>
-          Complete
-        </button>
-      )}
-      {item.status === STATUS.ACTIVE && (
-        <button onClick={setStatus} value={STATUS.CANCELLED}>
-          Cancel
-        </button>
-      )}
-    </li>
+    <div className={todoListStyles.item}>
+      <Link to={`/todos/${item.id}`}>
+        {item.content}{" "}
+        {item.status === STATUS.CANCELLED && (
+          <span>
+            <i> - Cancelled</i>
+          </span>
+        )}
+      </Link>
+
+      <div className={todoListStyles.buttonsContainer}>
+        {/* Buttons to change status */}
+        {item.status !== STATUS.ACTIVE && item.status !== STATUS.CANCELLED ? (
+          <CheckCircleIcon
+            className={todoListStyles.button}
+            onClick={() => setStatus(STATUS.ACTIVE)}
+            sx={{ color: "var(--primary-color-dark)" }}
+          />
+        ) : null}
+
+        {item.status !== STATUS.COMPLETED &&
+        item.status !== STATUS.CANCELLED ? (
+          <CheckCircleOutlineIcon
+            className={todoListStyles.button}
+            onClick={() => setStatus(STATUS.COMPLETED)}
+          />
+        ) : null}
+
+        {item.status === STATUS.ACTIVE && (
+          <ClearOutlinedIcon
+            className={todoListStyles.button}
+            onClick={() => setStatus(STATUS.CANCELLED)}
+          />
+        )}
+
+        {item.status === STATUS.CANCELLED && (
+          <button
+            className={todoListStyles.makeActiveBtn}
+            onClick={() => setStatus(STATUS.ACTIVE)}
+          >
+            Make active
+          </button>
+        )}
+      </div>
+    </div>
   );
 }
 

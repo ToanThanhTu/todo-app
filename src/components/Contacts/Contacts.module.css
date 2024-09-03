@@ -1,0 +1,16 @@
+.contacts {
+  max-width: 400px;
+}
+
+.contacts > * {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+@media (max-width: 600px) {
+  .contacts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

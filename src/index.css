@@ -1,14 +1,29 @@
+@import "node_modules/modern-normalize/modern-normalize.css";
+
+:root {
+  /* Primary theme colors */
+  --primary-color: #f3d34a;
+  --primary-color-light: #f3e37c;
+  --primary-color-dark: #c09f0c;
+  --primary-color-darker: #4d4005;
+
+  /* Secondary colors */
+  --secondary-color: #333333;
+
+  /* Text colors */
+  --text-color-primary: #141414;
+  --text-color-secondary: #474747;
+  --text-color-light: #666666;
+
+  /* hover colors */
+  --status-buttons-hover-color: #f3e37c;
+}
+
 *,
 *::before,
 *::after {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   box-sizing: inherit;
-}
-
-body {
-  box-sizing: border-box;
-  /* display: flex;
-  justify-content: center; */
 }
 
 .app {
@@ -24,4 +39,54 @@ body {
 
 .content {
   padding: 0 20px;
+}
+
+.buttonsContainer {
+  margin: 0 auto;
+}
+
+.buttonsContainer > * {
+  margin: 5px;
+  padding: 10px;
+}
+
+button {
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color-primary);
+}
+
+a:hover {
+  background-color: var(--primary-color-light);
+}
+
+a:visited {
+  text-decoration: none;
+  color: var(--text-color-primary);
+}
+
+select, input {
+  margin: 5px 5px;
+}
+
+@media (max-width: 600px) {
+  .app {
+    width: 90vw;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .content {
+    padding: 0;
+  }
 }

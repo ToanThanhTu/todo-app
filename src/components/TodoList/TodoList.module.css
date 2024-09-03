@@ -2,3 +2,50 @@
   display: flex;
   justify-content: space-between;
 }
+
+.deleteBtn {
+  border: 1px solid red;
+  color: red;
+  background-color: white;
+}
+
+.list {
+  margin: 20px 0;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid black;
+}
+
+.buttonsContainer {
+  display: inline;
+}
+
+.button {
+  padding: 5px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.makeActiveBtn {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: white;
+}
+
+.makeActiveBtn:hover {
+  background-color: var(--primary-color-light);
+}
+
+@media (max-width: 940px) {
+  .filters {
+    display: block;
+  }
+}

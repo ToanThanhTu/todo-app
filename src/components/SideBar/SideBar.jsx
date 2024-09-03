@@ -22,40 +22,43 @@ function SideBar({ categories, todoList }) {
 
   return (
     <div className={sideBarStyles.sidebar}>
-      <h3>User Name</h3>
+      <div className={sideBarStyles.userinfo}>
+        <h3>User Name</h3>
+        <p>email@gmail.com</p>
 
-      <table>
-        <tbody>
-          <tr>
-            <td>{activeTasks}</td>
-            <td>{completedTasks}</td>
-            <td>{todoList.length}</td>
-          </tr>
-          <tr>
-            <td>Active ToDos</td>
-            <td>Completed ToDos</td>
-            <td>Total ToDos</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Categories</h3>
-
-      <div className={sideBarStyles.categories}>
-        <ul>
-          {categories.map((category) => (
-            <li key={category.id}>{category.name}</li>
-          ))}
-        </ul>
+        <table>
+          <tbody>
+            <tr className={sideBarStyles.numbersRow}>
+              <td>{activeTasks}</td>
+              <td>{completedTasks}</td>
+              <td>{todoList.length}</td>
+            </tr>
+            <tr className={sideBarStyles.tableTexts}>
+              <td>Active ToDos</td>
+              <td>Completed ToDos</td>
+              <td>Total ToDos</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <ToggleableModal
-        buttonName="Create new category"
-        styles={sideBarStyles.button}
-        ref={categoryFormRef}
-      >
-        <NewCategoryForm onClose={handleClose} />
-      </ToggleableModal>
+      <div className={sideBarStyles.categories}>
+        <h3>Categories</h3>
+
+        <ul>
+          {categories.map((category) => (
+            <li key={category.id} className={sideBarStyles.category}>{category.name}</li>
+          ))}
+        </ul>
+
+        <ToggleableModal
+          buttonName="New category"
+          styles={sideBarStyles.button}
+          ref={categoryFormRef}
+        >
+          <NewCategoryForm onClose={handleClose} />
+        </ToggleableModal>
+      </div>
     </div>
   );
 }

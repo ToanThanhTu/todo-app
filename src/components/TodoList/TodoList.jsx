@@ -85,7 +85,12 @@ function TodoList({ todoList }) {
             handleCategoryChange={(event) => setFilter(event, "category")}
           />
           {filter.category !== "0" && (
-            <button onClick={handleDeleteCategory}>Delete</button>
+            <button
+              className={todoListStyles.deleteBtn}
+              onClick={handleDeleteCategory}
+            >
+              Delete
+            </button>
           )}
         </div>
 
@@ -94,11 +99,11 @@ function TodoList({ todoList }) {
         />
       </div>
 
-      <ul>
+      <div className={todoListStyles.list}>
         {displayTodoList.map((item) => (
           <TodoListItem key={item.id} item={item} />
         ))}
-      </ul>
+      </div>
 
       <NewTodoButton />
     </>

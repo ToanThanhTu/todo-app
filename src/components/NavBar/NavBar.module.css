@@ -1,12 +1,60 @@
+.navcontainer {
+  display: block;
+  background-color: var(--primary-color-light);
+}
+
 .navbar {
   display: flex;
   width: 70vw;
-  height: 50px;
   align-items: center;
   justify-content: center;
 }
 
+.navmenu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 34px;
+  background-color: var(--primary-color-light);
+}
+
 .item {
-  padding: 10px;
+  padding: 15px;
   margin: 0 5px;
+  text-decoration: none;
+}
+
+.item:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.item:visited {
+  color: var(--text-color-secondary);
+}
+
+.menubutton {
+  display: none;
+  padding: 5px;
+  background-color: var(--primary-color-dark);
+}
+
+@media (max-width: 600px) {
+  .navcontainer {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .menubutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .item {
+    margin: 0;
+  }
 }
