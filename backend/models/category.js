@@ -12,6 +12,10 @@ const categorySchema = new mongoose.Schema({
       ref: "Todo",
     },
   ],
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 categorySchema.set("toJSON", {

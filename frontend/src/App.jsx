@@ -21,6 +21,8 @@ import Login from "./components/Login/Login";
 function App() {
   const dispatch = useDispatch();
 
+  const loggedUser = useSelector((state) => state.user);
+
   useEffect(() => {
     dispatch(initializeTodoList());
     dispatch(initializeCategories());

@@ -10,6 +10,8 @@ const middleware = require("./utils/middleware");
 
 const todosRouter = require("./controllers/todos");
 const categoriesRouter = require("./controllers/categories");
+const usersRouter = require("./controllers/users");
+const loginRouter = require("./controllers/login");
 
 const mongoURL = config.MONGODB_URI;
 logger.info(`Connecting to ${mongoURL}`);
@@ -27,8 +29,11 @@ app.use(cors());
 app.use(express.static("dist"));
 app.use(express.json());
 
+app.use(middleware.tokenExtractor);
 app.use("/api/todos", todosRouter);
 app.use("/api/categories", categoriesRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/login", loginRouter);
 
 app.use(middleware.requestLogger);
 

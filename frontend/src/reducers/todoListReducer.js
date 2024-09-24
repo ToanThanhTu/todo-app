@@ -4,7 +4,7 @@ import todoService from "../services/todo";
 
 import { addTodoToCategory } from "./categoryReducer";
 
-const todoListReducer = createSlice({
+const todoListSlice = createSlice({
   name: "todo",
   initialState: [],
   reducers: {
@@ -29,7 +29,7 @@ const todoListReducer = createSlice({
 });
 
 export const { setTodoList, appendTodoItem, updateTodo, removeTodo } =
-  todoListReducer.actions;
+  todoListSlice.actions;
 
 export const initializeTodoList = () => {
   return async (dispatch) => {
@@ -47,7 +47,7 @@ export const addTodoItem = (content, category, status) => {
 
   return async (dispatch) => {
     const savedItem = await todoService.create(item);
-    
+
     dispatch(appendTodoItem(savedItem));
     dispatch(addTodoToCategory(savedItem.id, category));
   };
@@ -72,4 +72,4 @@ export const deleteTodo = (id) => {
   };
 };
 
-export default todoListReducer.reducer;
+export default todoListSlice.reducer;
