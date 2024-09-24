@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 function TodoItem({ todoItem }) {
   const categories = useSelector(state => state.categories);
 
-  const category = categories.find((category) => category.id === todoItem.category);
+  const category = categories.find((category) => category.id === todoItem.category.id);  
 
   return (
     <div>

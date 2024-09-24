@@ -1,0 +1,28 @@
+{
+  "contacts": [
+    {
+      "name": "Email",
+      "icon": "Email",
+      "url": "mailto:toantu3005@gmail.com",
+      "id": "3b63"
+    },
+    {
+      "name": "Phone",
+      "icon": "Phone",
+      "url": "tel:+61403001616",
+      "id": "eb44"
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "LinkedIn",
+      "url": "https://www.linkedin.com/in/thanh-toan-tu/",
+      "id": "f9ed"
+    },
+    {
+      "name": "GitHub",
+      "icon": "GitHub",
+      "url": "https://github.com/ToanThanhTu",
+      "id": "6b5e"
+    }
+  ]
+}

@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import todoService from "../services/todo";
 
-import { generateId } from "./reducerHelper";
 import { addTodoToCategory } from "./categoryReducer";
 
 const todoListReducer = createSlice({
@@ -44,13 +43,13 @@ export const addTodoItem = (content, category, status) => {
     content,
     category,
     status,
-    id: generateId(),
   };
 
   return async (dispatch) => {
-    await todoService.create(item);
-    dispatch(appendTodoItem(item));
-    dispatch(addTodoToCategory(item.id, category));
+    const savedItem = await todoService.create(item);
+    
+    dispatch(appendTodoItem(savedItem));
+    dispatch(addTodoToCategory(savedItem.id, category));
   };
 };
 

@@ -38,16 +38,15 @@ function TodoList({ todoList }) {
     displayTodoList = todoList;
   } else if (filter.status === "ALL") {
     displayTodoList = todoList.filter(
-      (item) => item.category === filter.category
+      (item) => item.category.id === filter.category
     );
   } else if (filter.category === "0") {
     displayTodoList = todoList.filter((item) => item.status === filter.status);
   } else {
     // Apply filter as normal
-    displayTodoList = todoList.filter(
-      (item) =>
-        item.category === filter.category && item.status === filter.status
-    );
+    displayTodoList = todoList.filter((item) => {
+      return item.category.id === filter.category && item.status === filter.status;
+    });
   }
 
   const handleDeleteCategory = () => {
@@ -61,7 +60,7 @@ function TodoList({ todoList }) {
 
     if (confirmed) {
       const todosToDelete = todoList.filter(
-        (todo) => todo.category === categoryToDelete.id
+        (todo) => todo.category.id === categoryToDelete.id
       );
 
       dispatch(deleteCategory(categoryToDelete));

@@ -2,8 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import categoryService from "../services/categories";
 
-import { generateId } from "./reducerHelper";
-
 const categorySlice = createSlice({
   name: "categories",
   initialState: [],
@@ -42,22 +40,21 @@ export const addCategory = (name) => {
   const category = {
     name,
     todos: [],
-    id: generateId(),
   };
 
   return async (dispatch) => {
-    await categoryService.create(category);
-    dispatch(appendCategory(category));
+    const savedCategory = await categoryService.create(category);
+    dispatch(appendCategory(savedCategory));
   };
 };
 
 export const addTodoToCategory = (todoId, categoryId) => {
   return async (dispatch) => {
-    const categoyToUpdate = await categoryService.getOne(categoryId);
+    const categoryToUpdate = await categoryService.getOne(categoryId);
 
     const updatedCategory = {
-      ...categoyToUpdate,
-      todos: categoyToUpdate.todos.concat(todoId),
+      ...categoryToUpdate,
+      todos: categoryToUpdate.todos.concat(todoId),
     };
 
     await categoryService.update(categoryId, updatedCategory);
