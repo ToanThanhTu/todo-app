@@ -17,16 +17,24 @@ import SideBar from "./components/SideBar/SideBar";
 import { useMatch } from "react-router-dom";
 import Contacts from "./components/Contacts/Contacts";
 import Login from "./components/Login/Login";
+import { initializeUser } from "./reducers/userReducer";
 
 function App() {
   const dispatch = useDispatch();
-
+  
   const loggedUser = useSelector((state) => state.user);
 
   useEffect(() => {
-    dispatch(initializeTodoList());
-    dispatch(initializeCategories());
+    dispatch(initializeUser());
+    
   }, [dispatch]);
+
+  useEffect(() => {
+    if (loggedUser) {
+      dispatch(initializeTodoList(loggedUser.id));
+      dispatch(initializeCategories(loggedUser.id));
+    }
+  }, [dispatch, loggedUser])
 
   const todoList = useSelector((state) => state.todoList);
   const categories = useSelector((state) => state.categories);
@@ -41,11 +49,16 @@ function App() {
       <NavBar />
 
       <div className="container">
-        <SideBar categories={categories} todoList={todoList} />
+        <div>
+          {loggedUser ? (
+            <SideBar categories={categories} todoList={todoList} />
+          ) : (
+            <Login />
+          )}
+        </div>
 
         <div className="content">
           <Routes>
-            <Route path="/login" element={<Login />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route
               path="/todos/:id"

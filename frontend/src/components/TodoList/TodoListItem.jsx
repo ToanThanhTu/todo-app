@@ -13,9 +13,6 @@ function TodoListItem({ item }) {
   const dispatch = useDispatch();
 
   const setStatus = (status) => {
-    // const status = event.target.value;
-    console.log("set status:", status);
-
     dispatch(updateStatus(item, status));
   };
 

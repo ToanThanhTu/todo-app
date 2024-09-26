@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import tokenService from "../services/token";
 import loginService from "../services/login";
+import userService from "../services/users";
+import { setToken } from "../services/auth";
 
 const userSlice = createSlice({
   name: "user",
@@ -21,7 +22,7 @@ export const initializeUser = () => {
 
     if (loggedUser) {
       const user = JSON.parse(loggedUser);
-      tokenService.setToken(user.token);
+      setToken(user.token);
       dispatch(setUser(user));
     } else {
       dispatch(setUser(null));
@@ -40,7 +41,7 @@ export const login = (username, password) => {
     );
 
     dispatch(setUser(loggedUser));
-    tokenService.setToken(loggedUser.token);
+    setToken(loggedUser.token);
   };
 };
 
@@ -48,6 +49,17 @@ export const logout = () => {
   return (dispatch) => {
     window.localStorage.removeItem("loggedTodoappUser");
     dispatch(setUser(null));
+  };
+};
+
+export const create = (username, password) => {
+  const user = {
+    username,
+    password,
+  };
+
+  return async () => {
+    await userService.create(user);
   };
 };
 

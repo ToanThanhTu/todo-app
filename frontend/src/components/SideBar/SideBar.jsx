@@ -24,7 +24,6 @@ function SideBar({ categories, todoList }) {
     <div className={sideBarStyles.sidebar}>
       <div className={sideBarStyles.userinfo}>
         <h3>User Name</h3>
-        <p>email@gmail.com</p>
 
         <table>
           <tbody>

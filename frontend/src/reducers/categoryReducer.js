@@ -29,9 +29,9 @@ const categorySlice = createSlice({
 export const { setCategories, appendCategory, updateCategory, removeCategory } =
   categorySlice.actions;
 
-export const initializeCategories = () => {
+export const initializeCategories = (id) => {
   return async (dispatch) => {
-    const categories = await categoryService.getAll();
+    const categories = await categoryService.getAllOfUser(id);
     dispatch(setCategories(categories));
   };
 };

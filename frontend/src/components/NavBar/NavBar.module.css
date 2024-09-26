@@ -11,17 +11,14 @@
 }
 
 .navmenu {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 34px;
-  background-color: var(--primary-color-light);
+  display: none;
 }
 
 .item {
   padding: 15px;
   margin: 0 5px;
   text-decoration: none;
+  background-color: var(--primary-color-light);
 }
 
 .item:hover {
@@ -34,8 +31,6 @@
 
 .menubutton {
   display: none;
-  padding: 5px;
-  background-color: var(--primary-color-dark);
 }
 
 @media (max-width: 600px) {
@@ -52,9 +47,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 5px;
+    background-color: var(--primary-color-dark);
+  }
+
+  .navmenu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 34px;
+    background-color: var(--primary-color-light);
   }
 
   .item {
     margin: 0;
+    text-align: left;
   }
 }

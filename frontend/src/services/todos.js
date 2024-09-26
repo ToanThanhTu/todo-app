@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "./auth";
 
-const baseUrl = "/api/categories";
+const baseUrl = "/api/todos";
 
 const getAllOfUser = async (userid) => {
   const response = await axios.get(`${baseUrl}/user/${userid}`);
@@ -13,12 +13,12 @@ const getOne = async (id) => {
   return response.data;
 };
 
-const create = async (category) => {
+const create = async (item) => {
   const config = {
     headers: { Authorization: getToken() },
   };
 
-  const response = await axios.post(baseUrl, category, config);
+  const response = await axios.post(baseUrl, item, config);
   return response.data;
 };
 

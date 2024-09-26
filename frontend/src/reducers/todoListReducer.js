@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import todoService from "../services/todo";
+import todoService from "../services/todos";
 
 import { addTodoToCategory } from "./categoryReducer";
 
@@ -31,9 +31,9 @@ const todoListSlice = createSlice({
 export const { setTodoList, appendTodoItem, updateTodo, removeTodo } =
   todoListSlice.actions;
 
-export const initializeTodoList = () => {
+export const initializeTodoList = (userid) => {
   return async (dispatch) => {
-    const todoList = await todoService.getAll();
+    const todoList = await todoService.getAllOfUser(userid);
     dispatch(setTodoList(todoList));
   };
 };

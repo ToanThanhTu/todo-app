@@ -2,7 +2,7 @@ import { useRef } from "react";
 import ToggleableModal from "../Modal/ToggleableModal";
 import NewUserStyles from "./NewUser.module.css";
 import { useDispatch } from "react-redux";
-import { create } from "../../reducers/userListReducer";
+import { create } from "../../reducers/userReducer";
 
 function NewUserButton() {
   const newUserFormRef = useRef();

@@ -1,11 +1,12 @@
 import { useDispatch } from "react-redux";
 import NewUserButton from "../NewUser/NewUser";
 import loginFormStyles from "./Login.module.css";
+import { login } from "../../reducers/userReducer";
 
 function Login() {
   const dispatch = useDispatch();
 
-  const login = (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
 
     const username = event.target.username.value;
@@ -19,7 +20,7 @@ function Login() {
 
   return (
     <>
-      <form className={loginFormStyles.form} onSubmit={login}>
+      <form className={loginFormStyles.form} onSubmit={handleLogin}>
         <h1>ToDo App</h1>
 
         <h2>Login</h2>

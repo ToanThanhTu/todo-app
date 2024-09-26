@@ -5,7 +5,7 @@ const middleware = require("../utils/middleware");
 todosRouter.get("/", async (request, response) => {
   const todos = await Todo.find({})
     .populate("category", { name: 1 })
-    .populate("user", { username: 1 });
+    .populate("user", { username: 1, id: 1 });
 
   response.json(todos);
 });
@@ -16,6 +16,14 @@ todosRouter.get("/:id", async (request, response) => {
     .populate("user", { username: 1 });
 
   response.json(todo);
+});
+
+todosRouter.get("/user/:userid", async (request, response) => {
+  const todos = await Todo.find({ user: request.params.userid })
+    .populate("category", { name: 1 })
+    .populate("user", { username: 1, id: 1 });
+
+  response.json(todos);
 });
 
 todosRouter.post("/", middleware.userExtractor, async (request, response) => {
@@ -32,9 +40,10 @@ todosRouter.post("/", middleware.userExtractor, async (request, response) => {
 
   const savedTodo = await todo.save();
 
-  const populatedTodo = await savedTodo
-    .populate("category", { name: 1 })
-    .populate("user", { username: 1 });
+  const populatedTodo = await savedTodo.populate([
+    { path: "category", select: "name" },
+    { path: "user", select: "username id" },
+  ]);
 
   // add the new todo to user object
   user.todos = user.todos.concat(populatedTodo._id);
