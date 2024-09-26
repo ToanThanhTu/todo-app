@@ -7,6 +7,8 @@
   border: 1px solid red;
   color: red;
   background-color: white;
+  padding: 5px;
+  margin-left: 5px;
 }
 
 .list {
@@ -17,8 +19,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 0;
-  border-bottom: 1px solid black;
+  padding: 5px 10px;
+}
+
+.item:nth-child(odd) {
+  background-color: var(--secondary-color-gray);
 }
 
 .buttonsContainer {

@@ -21,7 +21,13 @@ function Contacts() {
 
       <div className={contactsStyles.contacts}>
         {contacts.map(({ name, icon, url }) => (
-          <a key={name} href={url} target="_blank" rel="noreferrer">
+          <a
+            key={name}
+            href={url}
+            target="_blank"
+            rel="noreferrer"
+            className={contactsStyles.contact}
+          >
             {iconMap[icon]} - {name}
           </a>
         ))}

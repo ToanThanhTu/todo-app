@@ -72,7 +72,7 @@ function NavBar() {
         className={navStyles.menubutton}
         onClick={() => setDisplayNav(!displayNav)}
       >
-        <MenuIcon />
+        <MenuIcon fontSize="medium" />
       </button>
 
       {displayNav ? (

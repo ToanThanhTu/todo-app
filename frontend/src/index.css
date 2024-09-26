@@ -9,11 +9,22 @@
 
   /* Secondary colors */
   --secondary-color: #333333;
+  --secondary-color-gray: #EBEBEB;
+
+  /* Background colors */
+  --background-color-white: #F5F5F5;
+  --background-color-yellow: #f4eea9;
 
   /* Text colors */
   --text-color-primary: #141414;
   --text-color-secondary: #474747;
   --text-color-light: #666666;
+
+  /* Divider color */
+  --divider-color: #B0B8BF;
+
+  /* Button color */
+  --button-color: #E0E0E0;
 
   /* hover colors */
   --status-buttons-hover-color: #f3e37c;
@@ -26,19 +37,29 @@
   box-sizing: inherit;
 }
 
+html {
+  background-color: var(--background-color-yellow);
+  height: 100%;
+  padding-top: 10vh;
+  overflow: hidden;
+}
+
 .app {
-  width: 70vw;
+  width: 80vw;
   min-width: 250px;
   margin: 0 auto;
+  background-color: var(--background-color-white);
+  border-radius: 20px;
+  padding-top: 20px
 }
 
 .container {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+  display: flex;
 }
 
 .content {
-  padding: 0 20px;
+  flex-grow: 2;
+  padding: 20px;
 }
 
 .buttonsContainer {
@@ -47,11 +68,12 @@
 
 .buttonsContainer > * {
   margin: 5px;
-  padding: 10px;
 }
 
 button {
   border: none;
+  padding: 10px;
+  background-color: var(--button-color);
 }
 
 button:hover {
@@ -63,20 +85,29 @@ a {
   color: var(--text-color-primary);
 }
 
-a:hover {
-  background-color: var(--primary-color-light);
+label {
+  padding-right: 5px;
 }
 
-a:visited {
-  text-decoration: none;
-  color: var(--text-color-primary);
+select,
+input {
+  padding: 3px;
+  margin: 5px 0;
 }
 
-select, input {
-  margin: 5px 5px;
+.horizontal-divider {
+  border: 1px solid var(--divider-color);
 }
 
-@media (max-width: 600px) {
+.vertical-divider {
+  border: 1px solid var(--divider-color);
+}
+
+@media (max-width: 700px) {
+  html {
+    padding-top: 2vh;
+    overflow: auto;
+  }
   .app {
     width: 90vw;
   }
@@ -84,9 +115,16 @@ select, input {
   .container {
     display: flex;
     flex-direction: column-reverse;
+    padding: 0;
   }
 
-  .content {
-    padding: 0;
+  .vertical-divider {
+    margin: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .app {
+    width: 90vw;
   }
 }

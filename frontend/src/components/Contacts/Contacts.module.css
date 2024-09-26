@@ -1,5 +1,10 @@
+.container {
+  position: relative;
+}
+
 .contacts {
-  max-width: 400px;
+  position: relative;
+  width: 100%;
 }
 
 .contacts > * {
@@ -8,9 +13,31 @@
   padding: 10px;
 }
 
-@media (max-width: 600px) {
+.contact:nth-child(even) {
+  background-color: var(--secondary-color-gray);
+}
+
+@media (max-width: 700px) {
   .contacts {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .contact:nth-child(even) {
+    background-color: var(--background-color-white);
+  }
+
+  .contact:first-child {
+    background-color: var(--secondary-color-gray);
+  }
+
+  .contact:last-child {
+    background-color: var(--secondary-color-gray);
+  }
+}
+
+@media (max-width: 300px) {
+  .contacts > * {
+    padding: 5px;
   }
 }

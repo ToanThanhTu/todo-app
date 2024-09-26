@@ -14,3 +14,9 @@
   padding: 20px;
   gap: 20px;
 }
+
+.categoryInput {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

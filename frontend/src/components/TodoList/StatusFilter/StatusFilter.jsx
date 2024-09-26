@@ -37,7 +37,7 @@ function StatusFilter({ handleStatusChange }) {
           name="status"
           id="status-dropdown"
           onChange={handleStatusChange}
-          defaultValue={STATUS.ACTIVE}
+          value={currentStatus || STATUS.ACTIVE}
         >
           <option value="ALL">ALL</option>
           {Object.entries(STATUS).map(([status, value]) => (

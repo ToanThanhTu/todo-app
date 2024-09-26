@@ -25,7 +25,7 @@ function SideBar({ categories, todoList }) {
       <div className={sideBarStyles.userinfo}>
         <h3>User Name</h3>
 
-        <table>
+        <table className={sideBarStyles.stats}>
           <tbody>
             <tr className={sideBarStyles.numbersRow}>
               <td>{activeTasks}</td>
@@ -33,13 +33,15 @@ function SideBar({ categories, todoList }) {
               <td>{todoList.length}</td>
             </tr>
             <tr className={sideBarStyles.tableTexts}>
-              <td>Active ToDos</td>
-              <td>Completed ToDos</td>
-              <td>Total ToDos</td>
+              <td>Active</td>
+              <td>Completed</td>
+              <td>Total</td>
             </tr>
           </tbody>
         </table>
       </div>
+
+      <div className="horizontal-divider"></div>
 
       <div className={sideBarStyles.categories}>
         <h3>Categories</h3>

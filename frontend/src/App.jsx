@@ -48,14 +48,18 @@ function App() {
     <main className="app">
       <NavBar />
 
+      <div className="horizontal-divider"></div>
+
       <div className="container">
-        <div>
+        <div className="sidebar">
           {loggedUser ? (
             <SideBar categories={categories} todoList={todoList} />
           ) : (
             <Login />
           )}
         </div>
+
+        <div className="vertical-divider"></div>
 
         <div className="content">
           <Routes>

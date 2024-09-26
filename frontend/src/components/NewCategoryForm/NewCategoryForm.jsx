@@ -17,9 +17,9 @@ function NewCategoryForm({ onClose }) {
 
   return (
     <form onSubmit={createCategory} className={categoryFormStyles.modal}>
-      <h2>New Category</h2>
+      <h1>New Category</h1>
 
-      <div>
+      <div className={categoryFormStyles.categoryInput}>
         <label htmlFor="category-name">Category name:</label>
         <input id="category-name" type="text" name="categoryName" />
       </div>

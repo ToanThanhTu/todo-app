@@ -20,7 +20,7 @@ todosRouter.get("/:id", async (request, response) => {
 
 todosRouter.get("/user/:userid", async (request, response) => {
   const todos = await Todo.find({ user: request.params.userid })
-    .populate("category", { name: 1 })
+    .populate("category", { name: 1, id: 1 })
     .populate("user", { username: 1, id: 1 });
 
   response.json(todos);

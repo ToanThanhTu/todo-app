@@ -19,7 +19,7 @@ function Login() {
   };
 
   return (
-    <>
+    <div className={loginFormStyles.login}>
       <form className={loginFormStyles.form} onSubmit={handleLogin}>
         <h1>ToDo App</h1>
 
@@ -34,7 +34,7 @@ function Login() {
         <button type="submit">Login</button>
       </form>
       <NewUserButton />
-    </>
+    </div>
   );
 }
 
