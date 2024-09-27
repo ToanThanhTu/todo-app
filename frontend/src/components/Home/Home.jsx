@@ -1,10 +1,13 @@
+import homeStyles from "./Home.module.css";
+
 function Home() {
   return (
     <div>
       <h1>ToDo App</h1>
       <h2>Welcome to your simple ToDo App</h2>
       <h3>Features:</h3>
-      <ul>
+      <ul className={homeStyles.features}>
+        <li>Create and login with a new user account</li>
         <li>Create Categories</li>
         <li>Delete Categories along with its ToDo items</li>
         <li>Create ToDo items</li>

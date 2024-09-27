@@ -20,9 +20,9 @@ function Contacts() {
       <h1>Contact me</h1>
 
       <div className={contactsStyles.contacts}>
-        {contacts.map(({ name, icon, url }) => (
+        {contacts.map(({ name, icon, url, id }) => (
           <a
-            key={name}
+            key={id}
             href={url}
             target="_blank"
             rel="noreferrer"

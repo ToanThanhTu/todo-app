@@ -1,12 +1,12 @@
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-
-import newTodoStyles from "./NewTodo.module.css";
+import { useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import { addTodoItem } from "../../reducers/todoListReducer";
-import { STATUS } from "../../constants/statusConstants";
 import ToggleableModal from "../Modal/ToggleableModal";
-import { useRef } from "react";
+
+import newTodoStyles from './NewTodo.module.css';
+
+import { STATUS } from "../../constants/statusConstants";
 
 function NewTodoButton() {
   const todoFormRef = useRef();
@@ -18,7 +18,6 @@ function NewTodoButton() {
   return (
     <ToggleableModal
       buttonName="New ToDo Item"
-      styles={newTodoStyles.button}
       ref={todoFormRef}
     >
       <NewTodoForm onClose={handleClose} />
@@ -44,15 +43,15 @@ function NewTodoForm({ onClose }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={newTodoStyles.modal}>
+    <form onSubmit={handleSubmit} className="modal">
       <h1>New ToDo Task</h1>
 
-      <div>
+      <div className={newTodoStyles.inputs}>
         <label htmlFor="task-content">Task content:</label>
         <input id="task-content" type="text" name="taskContent" />
       </div>
 
-      <div>
+      <div className={newTodoStyles.inputs}>
         <label htmlFor="taskCategory">Task category:</label>
         <select name="taskCategory" id="taskCategory">
           {categories.map((category) => (
@@ -63,7 +62,7 @@ function NewTodoForm({ onClose }) {
         </select>
       </div>
 
-      <div>
+      <div className={newTodoStyles.inputs}>
         <label htmlFor="taskStatusSelect">Task status:</label>
         <select name="taskStatus" id="taskStatusSelect">
           <option value={STATUS.ACTIVE}>{STATUS.ACTIVE}</option>

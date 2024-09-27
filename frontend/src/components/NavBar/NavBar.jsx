@@ -1,9 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
-import navStyles from "./NavBar.module.css";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
 import { logout } from "../../reducers/userReducer";
+
+import navStyles from "./NavBar.module.css";
+import MenuIcon from "@mui/icons-material/Menu";
 
 function NavBar() {
   const [displayNav, setDisplayNav] = useState(false);
@@ -19,6 +21,7 @@ function NavBar() {
     navigate("/");
   };
 
+  // ==== Helper functions to avoid repeatitive codes =====
   const homeBtn = () => (
     <Link
       className={navStyles.item}
@@ -46,7 +49,7 @@ function NavBar() {
       to="/contacts"
       onClick={() => setDisplayNav(false)}
     >
-      CONTACTS
+      CONTACT ME
     </Link>
   );
 
@@ -56,6 +59,8 @@ function NavBar() {
         LOGOUT
       </button>
     ) : null;
+
+  // ========================================================
 
   return (
     <div className={navStyles.navcontainer}>
@@ -68,6 +73,8 @@ function NavBar() {
       </nav>
 
       {/* Navigation menu for screens below 600px */}
+      <h4 className={navStyles.appName}>ToDo App</h4>
+
       <button
         className={navStyles.menubutton}
         onClick={() => setDisplayNav(!displayNav)}

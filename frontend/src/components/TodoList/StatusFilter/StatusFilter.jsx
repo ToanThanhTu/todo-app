@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
+
 import { STATUS } from "../../../constants/statusConstants";
+
 import statusFilterStyles from "./StatusFilter.module.css";
 
 function StatusFilter({ handleStatusChange }) {

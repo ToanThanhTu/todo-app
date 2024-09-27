@@ -33,7 +33,6 @@
 *,
 *::before,
 *::after {
-  /* border: 1px solid black; */
   box-sizing: inherit;
 }
 
@@ -46,6 +45,7 @@ html {
 
 .app {
   width: 80vw;
+  max-width: 1000px;
   min-width: 250px;
   margin: 0 auto;
   background-color: var(--background-color-white);
@@ -95,12 +95,26 @@ input {
   margin: 5px 0;
 }
 
-.horizontal-divider {
+.divider {
   border: 1px solid var(--divider-color);
 }
 
-.vertical-divider {
-  border: 1px solid var(--divider-color);
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  background-color: white;
+  border: 2px solid rgb(240, 240, 240);
+  border-radius: 12px;
+  position:  absolute;
+  width: 40%;
+  max-width: 500px;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  padding: 20px 50px;
+  gap: 10px;
 }
 
 @media (max-width: 700px) {
@@ -116,10 +130,6 @@ input {
     display: flex;
     flex-direction: column-reverse;
     padding: 0;
-  }
-
-  .vertical-divider {
-    margin: 0;
   }
 }
 

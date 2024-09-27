@@ -48,6 +48,7 @@ export const addCategory = (name) => {
   };
 };
 
+// After a todo item is created, it needs to be added to the corresponding category
 export const addTodoToCategory = (todoId, categoryId) => {
   return async (dispatch) => {
     const categoryToUpdate = await categoryService.getOne(categoryId);

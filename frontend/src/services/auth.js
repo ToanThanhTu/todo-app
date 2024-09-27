@@ -1,3 +1,5 @@
+// Setting and getting token for use in categories and todos services
+
 let token = null;
 
 export const setToken = (userToken) => {

@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+
 import categoryFilterStyles from "./CategoryFilter.module.css";
 
 function CategoryFilter({ categories, handleCategoryChange }) {

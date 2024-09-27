@@ -49,6 +49,8 @@ export const addTodoItem = (content, category, status) => {
     const savedItem = await todoService.create(item);
 
     dispatch(appendTodoItem(savedItem));
+
+    // add the new todo to the corresponding category
     dispatch(addTodoToCategory(savedItem.id, category));
   };
 };

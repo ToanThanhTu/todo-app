@@ -24,10 +24,16 @@
   display: none;
 }
 
+.appName {
+  display: none;
+}
+
 @media (max-width: 500px) {
   .navcontainer {
     display: flex;
-    flex-direction: row-reverse;
+    /* flex-direction: row-reverse; */
+    justify-content: space-between;
+    align-items: center;
   }
 
   .navbar {
@@ -42,7 +48,13 @@
     z-index: 2;
     height: 20px;
     background-color: var(--background-color-white);
-    padding: 5px 10px;
+    padding: 5px 20px;
+  }
+
+  .appName {
+    display: block;
+    margin: 0 20px;
+    font-style: italic;
   }
 
   .navmenu {

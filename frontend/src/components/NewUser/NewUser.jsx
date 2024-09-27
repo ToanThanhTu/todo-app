@@ -1,8 +1,9 @@
 import { useRef } from "react";
-import ToggleableModal from "../Modal/ToggleableModal";
-import NewUserStyles from "./NewUser.module.css";
 import { useDispatch } from "react-redux";
+
 import { create } from "../../reducers/userReducer";
+
+import ToggleableModal from "../Modal/ToggleableModal";
 
 function NewUserButton() {
   const newUserFormRef = useRef();
@@ -33,7 +34,7 @@ function NewUserForm({ onClose }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={NewUserStyles.modal}>
+    <form onSubmit={handleSubmit} className="modal">
       <h1>Create New User</h1>
 
       <label htmlFor="new-username">Username:</label>

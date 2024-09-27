@@ -1,9 +1,11 @@
-import sideBarStyles from "./SideBar.module.css";
+import { useRef } from "react";
+
+import ToggleableModal from "../Modal/ToggleableModal";
+import NewCategoryForm from "../NewCategoryForm/NewCategoryForm";
 
 import { STATUS } from "../../constants/statusConstants";
-import ToggleableModal from "../Modal/ToggleableModal";
-import { useRef } from "react";
-import NewCategoryForm from "../NewCategoryForm/NewCategoryForm";
+
+import sideBarStyles from "./SideBar.module.css";
 
 function SideBar({ categories, todoList }) {
   const completedTasks = todoList.filter(
@@ -41,7 +43,7 @@ function SideBar({ categories, todoList }) {
         </table>
       </div>
 
-      <div className="horizontal-divider"></div>
+      <div className="divider"></div>
 
       <div className={sideBarStyles.categories}>
         <h3>Categories</h3>

@@ -90,7 +90,7 @@ categoriesRouter.put("/:id", async (request, response) => {
     { new: true }
   )
     .populate("todos", { content: 1, status: 1 })
-    .populate("user", { username: 1 });
+    .populate("user", { username: 1, id: 1 });
 
   response.json(updatedCategory);
 });

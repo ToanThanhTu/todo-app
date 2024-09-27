@@ -1,18 +1,17 @@
-import todoListStyles from "./TodoList.module.css";
-
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import CategoryFilter from "./CategoryFilter/CategoryFilter";
 import StatusFilter from "./StatusFilter/StatusFilter";
-
-import { applyFilter } from "../../reducers/filterReducer";
-
 import NewTodoButton from "../NewTodo/NewTodo";
 import TodoListItem from "./TodoListItem";
+
+import { applyFilter } from "../../reducers/filterReducer";
 import { deleteTodo } from "../../reducers/todoListReducer";
 import { deleteCategory } from "../../reducers/categoryReducer";
+
 import { STATUS } from "../../constants/statusConstants";
+
+import todoListStyles from "./TodoList.module.css";
 
 function TodoList({ todoList }) {
   const filter = useSelector((state) => state.filter);

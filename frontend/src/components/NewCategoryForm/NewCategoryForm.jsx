@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux";
-import categoryFormStyles from "./NewCategoryForm.module.css";
+
 import { addCategory } from "../../reducers/categoryReducer";
+
+import categoryFormStyles from "./NewCategoryForm.module.css";
 
 function NewCategoryForm({ onClose }) {
   const dispatch = useDispatch();
@@ -16,7 +18,7 @@ function NewCategoryForm({ onClose }) {
   };
 
   return (
-    <form onSubmit={createCategory} className={categoryFormStyles.modal}>
+    <form onSubmit={createCategory} className="modal">
       <h1>New Category</h1>
 
       <div className={categoryFormStyles.categoryInput}>

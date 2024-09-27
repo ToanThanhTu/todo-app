@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { STATUS } from "../../constants/statusConstants";
 import { useDispatch } from "react-redux";
+
 import { updateStatus } from "../../reducers/todoListReducer";
+
+import { STATUS } from "../../constants/statusConstants";
 
 import todoListStyles from "./TodoList.module.css";
 
@@ -27,8 +29,8 @@ function TodoListItem({ item }) {
         )}
       </Link>
 
+      {/* Buttons to change status, with conditional visibility */}
       <div className={todoListStyles.buttonsContainer}>
-        {/* Buttons to change status */}
         {item.status !== STATUS.ACTIVE && item.status !== STATUS.CANCELLED ? (
           <CheckCircleIcon
             className={todoListStyles.button}

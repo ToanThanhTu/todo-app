@@ -3,8 +3,8 @@ import { getToken } from "./auth";
 
 const baseUrl = "/api/todos";
 
-const getAllOfUser = async (userid) => {
-  const response = await axios.get(`${baseUrl}/user/${userid}`);
+const getAllOfUser = async (userId) => {
+  const response = await axios.get(`${baseUrl}/user/${userId}`);
   return response.data;
 };
 

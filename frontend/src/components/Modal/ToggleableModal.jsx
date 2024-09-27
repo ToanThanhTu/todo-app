@@ -1,10 +1,9 @@
-import { useImperativeHandle } from "react";
-import { forwardRef } from "react";
-import { useState } from "react";
+import { useImperativeHandle, forwardRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import modalStyles from './ToggleableModal.module.css';
 
+// ToggleableModal component for 'Create new user', 'New category', 'New ToDo Item' buttons
 const ToggleableModal = forwardRef((props, refs) => {
   const [showModal, setShowModal] = useState(false);
 

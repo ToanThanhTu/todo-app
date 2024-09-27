@@ -1,44 +1,42 @@
-import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Routes } from "react-router-dom";
-import { Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Route, Routes, useMatch } from "react-router-dom";
 
 // reducers
 import { initializeTodoList } from "./reducers/todoListReducer";
 import { initializeCategories } from "./reducers/categoryReducer";
+import { initializeUser } from "./reducers/userReducer";
 
 // components
-import TodoList from "./components/TodoList/TodoList";
-import TodoItem from "./components/TodoItem/TodoItem";
 import Home from "./components/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
 import SideBar from "./components/SideBar/SideBar";
-import { useMatch } from "react-router-dom";
+import TodoList from "./components/TodoList/TodoList";
+import TodoItem from "./components/TodoItem/TodoItem";
 import Contacts from "./components/Contacts/Contacts";
 import Login from "./components/Login/Login";
-import { initializeUser } from "./reducers/userReducer";
 
 function App() {
   const dispatch = useDispatch();
-  
+
   const loggedUser = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(initializeUser());
-    
   }, [dispatch]);
 
+  // Only initialize categories and todos when user is logged in
   useEffect(() => {
     if (loggedUser) {
-      dispatch(initializeTodoList(loggedUser.id));
       dispatch(initializeCategories(loggedUser.id));
+      dispatch(initializeTodoList(loggedUser.id));
     }
-  }, [dispatch, loggedUser])
+  }, [dispatch, loggedUser]);
 
-  const todoList = useSelector((state) => state.todoList);
   const categories = useSelector((state) => state.categories);
+  const todoList = useSelector((state) => state.todoList);
 
+  // Get the todo item object from the id in the url
   const match = useMatch("/todos/:id");
   const todoItem = match
     ? todoList.find((item) => item.id === match.params.id)
@@ -48,7 +46,7 @@ function App() {
     <main className="app">
       <NavBar />
 
-      <div className="horizontal-divider"></div>
+      <div className="divider"></div>
 
       <div className="container">
         <div className="sidebar">
@@ -59,7 +57,7 @@ function App() {
           )}
         </div>
 
-        <div className="vertical-divider"></div>
+        <div className="divider"></div>
 
         <div className="content">
           <Routes>
