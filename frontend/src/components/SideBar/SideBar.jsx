@@ -7,7 +7,7 @@ import { STATUS } from "../../constants/statusConstants";
 
 import sideBarStyles from "./SideBar.module.css";
 
-function SideBar({ categories, todoList }) {
+function SideBar({ categories, todoList, username }) {
   const completedTasks = todoList.filter(
     (item) => item.status === STATUS.COMPLETED
   ).length;
@@ -25,7 +25,7 @@ function SideBar({ categories, todoList }) {
   return (
     <div className={sideBarStyles.sidebar}>
       <div className={sideBarStyles.userinfo}>
-        <h3>User Name</h3>
+        <h3>{username}</h3>
 
         <table className={sideBarStyles.stats}>
           <tbody>

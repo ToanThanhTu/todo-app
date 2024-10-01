@@ -51,7 +51,7 @@ function App() {
       <div className="container">
         <div className="sidebar">
           {loggedUser ? (
-            <SideBar categories={categories} todoList={todoList} />
+            <SideBar categories={categories} todoList={todoList} username={loggedUser.username} />
           ) : (
             <Login />
           )}
