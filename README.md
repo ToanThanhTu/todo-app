@@ -1,5 +1,11 @@
 # A Simple ToDo App
 
+A simple ToDo app built with React, Node and Express. I use Redux for state management, MongoDB (with Mongoose library) for database management, and CSS Modules for styling.
+
+This project is deployed to Fly.io:
+
+[https://todoapp-backend.fly.dev](https://todoapp-backend.fly.dev)
+
 ## Features
 
 - Create and login with username and password

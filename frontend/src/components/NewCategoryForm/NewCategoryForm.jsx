@@ -1,8 +1,11 @@
 import { useDispatch } from "react-redux";
 
 import { addCategory } from "../../reducers/categoryReducer";
+import { displayNotification } from "../../reducers/notificationReducer";
 
 import categoryFormStyles from "./NewCategoryForm.module.css";
+
+import Notification from "../Notification/Notification";
 
 function NewCategoryForm({ onClose }) {
   const dispatch = useDispatch();
@@ -12,6 +15,16 @@ function NewCategoryForm({ onClose }) {
 
     const name = event.target.categoryName.value;
 
+    if (!name) {
+      dispatch(
+        displayNotification({
+          message: "Please enter a category name",
+          type: "error",
+        })
+      );
+      return;
+    }
+
     dispatch(addCategory(name));
 
     onClose();
@@ -20,6 +33,8 @@ function NewCategoryForm({ onClose }) {
   return (
     <form onSubmit={createCategory} className="modal">
       <h1>New Category</h1>
+
+      <Notification />
 
       <div className={categoryFormStyles.categoryInput}>
         <label htmlFor="category-name">Category name:</label>

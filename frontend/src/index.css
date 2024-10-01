@@ -117,6 +117,20 @@ input {
   gap: 10px;
 }
 
+.error {
+  border: 1px solid red;
+  border-radius: 5px;
+  color: red;
+  padding: 10px;
+}
+
+.info {
+  border: 1px solid green;
+  border-radius: 5px;
+  color: green;
+  padding: 10px;
+}
+
 @media (max-width: 700px) {
   html {
     padding-top: 2vh;

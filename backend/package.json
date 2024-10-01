@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ui": "rm -rf dist && cd ../frontend/ && pnpm run build && cp -r dist ../backend",
+    "predeploy": "pnpm run build:ui",
+    "deploy": "fly deploy"
   },
   "keywords": [],
   "author": "Thanh Toan Tu",

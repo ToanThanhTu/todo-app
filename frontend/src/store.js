@@ -3,6 +3,7 @@ import todoListReducer from "./reducers/todoListReducer";
 import categoryReducer from "./reducers/categoryReducer";
 import filterReducer from "./reducers/filterReducer";
 import userReducer from "./reducers/userReducer";
+import notificationReducer from "./reducers/notificationReducer";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     categories: categoryReducer,
     filter: filterReducer,
     user: userReducer,
+    notification: notificationReducer,
   },
 });
 

@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import NewUserButton from "../NewUser/NewUser";
 import loginFormStyles from "./Login.module.css";
 import { login } from "../../reducers/userReducer";
+import Notification from "../Notification/Notification";
 
 function Login() {
   const dispatch = useDispatch();
@@ -20,10 +21,12 @@ function Login() {
 
   return (
     <div className={loginFormStyles.login}>
-      <form className={loginFormStyles.form} onSubmit={handleLogin}>
-        <h1>ToDo App</h1>
+      <h1>ToDo App</h1>
 
-        <h2>Login</h2>
+      <h2>Login</h2>
+
+      <form className={loginFormStyles.form} onSubmit={handleLogin}>
+        <Notification />
 
         <label htmlFor="username">Username: </label>
         <input id="username" type="text" name="username" />
@@ -33,6 +36,7 @@ function Login() {
 
         <button type="submit">Login</button>
       </form>
+
       <NewUserButton />
     </div>
   );

@@ -4,6 +4,8 @@ import loginService from "../services/login";
 import userService from "../services/users";
 import { setToken } from "../services/auth";
 
+import { displayNotification } from "./notificationReducer";
+
 const userSlice = createSlice({
   name: "user",
   initialState: null,
@@ -32,16 +34,25 @@ export const initializeUser = () => {
 
 export const login = (username, password) => {
   return async (dispatch) => {
-    const loggedUser = await loginService.login({ username, password });
+    try {
+      const loggedUser = await loginService.login({ username, password });
 
-    // set user data in local storage
-    window.localStorage.setItem(
-      "loggedTodoappUser",
-      JSON.stringify(loggedUser)
-    );
+      // set user data in local storage
+      window.localStorage.setItem(
+        "loggedTodoappUser",
+        JSON.stringify(loggedUser)
+      );
 
-    dispatch(setUser(loggedUser));
-    setToken(loggedUser.token);
+      dispatch(setUser(loggedUser));
+      setToken(loggedUser.token);
+    } catch (exception) {
+      dispatch(
+        displayNotification({
+          message: exception.response.data.error,
+          type: "error",
+        })
+      );
+    }
   };
 };
 
