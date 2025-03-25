@@ -1,30 +1,31 @@
-const bcrypt = require("bcrypt");
-const userRouter = require("express").Router();
-const User = require("../models/user");
+const bcrypt = require("bcrypt")
+const userRouter = require("express").Router()
+const User = require("../models/user")
 
 userRouter.post("/", async (request, response) => {
-  const { username, password } = request.body;
+  const { username, password } = request.body
 
-  if (password.length < 4) {
+  if (username.length < 3 || username.length > 20 || password.length < 4 || password.length > 20) {
     return response.status(400).json({
-      error: "password must be at least 4 characters long",
-    });
+      error:
+        "Username must be between 3 and 20 characters long. Password must be between 4 and 20 characters long",
+    })
   }
 
-  const saltRounds = 10;
-  const passwordHash = await bcrypt.hash(password, saltRounds);
+  const saltRounds = 10
+  const passwordHash = await bcrypt.hash(password, saltRounds)
 
   const user = new User({
     username,
     passwordHash,
-  });
+  })
 
-  const savedUser = await user.save();
+  const savedUser = await user.save()
 
-  response.status(201).json(savedUser);
-});
+  response.status(201).json(savedUser)
+})
 
-userRouter.get("/", async (request, response) => {
+userRouter.get("/", async (_request, response) => {
   const users = await User.find({})
     .populate("todos", {
       content: 1,
@@ -33,9 +34,9 @@ userRouter.get("/", async (request, response) => {
     })
     .populate("categories", {
       name: 1,
-    });
+    })
 
-  response.json(users);
-});
+  response.json(users)
+})
 
-module.exports = userRouter;
+module.exports = userRouter

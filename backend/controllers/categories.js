@@ -38,7 +38,7 @@ categoriesRouter.post(
 
     const category = new Category({
       name: body.name,
-      todos: body.todos,
+      todos: [],
       user: user._id,
     });
 

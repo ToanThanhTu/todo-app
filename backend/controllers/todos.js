@@ -33,7 +33,7 @@ todosRouter.post("/", middleware.userExtractor, async (request, response) => {
 
   const todo = new Todo({
     content: body.content,
-    category: body.category,
+    category: body.categoryId,
     status: body.status,
     user: user._id,
   });

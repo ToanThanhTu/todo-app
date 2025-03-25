@@ -9,10 +9,10 @@
 
   /* Secondary colors */
   --secondary-color: #333333;
-  --secondary-color-gray: #EBEBEB;
+  --secondary-color-gray: #ebebeb;
 
   /* Background colors */
-  --background-color-white: #F5F5F5;
+  --background-color-white: #fffff5;
   --background-color-yellow: #f4eea9;
 
   /* Text colors */
@@ -21,10 +21,10 @@
   --text-color-light: #666666;
 
   /* Divider color */
-  --divider-color: #B0B8BF;
+  --divider-color: #e0e0e0;
 
   /* Button color */
-  --button-color: #E0E0E0;
+  --button-color: #e0e0e0;
 
   /* hover colors */
   --status-buttons-hover-color: #f3e37c;
@@ -36,21 +36,23 @@
   box-sizing: inherit;
 }
 
-html {
+body {
   background-color: var(--background-color-yellow);
-  height: 100%;
-  padding-top: 10vh;
-  overflow: hidden;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .app {
   width: 80vw;
-  max-width: 1000px;
-  min-width: 250px;
-  margin: 0 auto;
+  max-width: 1024px;
+  min-width: 768px;
   background-color: var(--background-color-white);
-  border-radius: 20px;
-  padding-top: 20px
+  border-radius: 24px;
 }
 
 .container {
@@ -59,7 +61,7 @@ html {
 
 .content {
   flex-grow: 2;
-  padding: 20px;
+  padding: 24px;
 }
 
 .buttonsContainer {
@@ -67,12 +69,12 @@ html {
 }
 
 .buttonsContainer > * {
-  margin: 5px;
+  margin: 8px;
 }
 
 button {
   border: none;
-  padding: 10px;
+  padding: 12px;
   background-color: var(--button-color);
 }
 
@@ -86,13 +88,23 @@ a {
 }
 
 label {
-  padding-right: 5px;
+  padding-right: 8px;
 }
 
 select,
 input {
-  padding: 3px;
-  margin: 5px 0;
+  margin: 6px 0;
+  border-radius: 6px;
+  border: 0;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  padding: 12px;
+}
+
+select {
+  padding: 8px;
 }
 
 .divider {
@@ -103,11 +115,11 @@ input {
   display: flex;
   flex-direction: column;
   align-items: left;
-  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 8px 28px 0px;
   background-color: white;
   border: 2px solid rgb(240, 240, 240);
   border-radius: 12px;
-  position:  absolute;
+  position: absolute;
   width: 40%;
   max-width: 500px;
   top: 20%;
@@ -115,40 +127,45 @@ input {
   transform: translate(-50%, -20%);
   padding: 20px 50px;
   gap: 10px;
+  z-index: 99;
 }
 
 .error {
   border: 1px solid red;
-  border-radius: 5px;
+  border-radius: 6px;
   color: red;
-  padding: 10px;
+  padding: 12px;
 }
 
 .info {
   border: 1px solid green;
-  border-radius: 5px;
+  border-radius: 6px;
   color: green;
-  padding: 10px;
+  padding: 12px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1024px) {
+  body {
+    height: auto;
+  }
+
+  .app {
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
   html {
-    padding-top: 2vh;
     overflow: auto;
   }
+
   .app {
-    width: 90vw;
+    width: auto;
   }
 
   .container {
     display: flex;
     flex-direction: column-reverse;
     padding: 0;
-  }
-}
-
-@media (max-width: 900px) {
-  .app {
-    width: 90vw;
   }
 }

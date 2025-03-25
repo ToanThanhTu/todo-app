@@ -1,0 +1,41 @@
+.footer {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  border-top: 2px solid var(--divider-color);
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+}
+
+.description > p {
+  margin: 4px;
+}
+
+.sourcecode {
+  text-decoration: underline;
+}
+
+.sourcecode:hover {
+  opacity: 0.8;
+}
+
+.divider {
+  height: 50px;
+  border-right: 2px solid var(--divider-color);
+}
+
+.socials {
+  display: flex;
+  gap: 12px;
+}
+
+.socials > a:hover {
+  opacity: 0.8;
+}
