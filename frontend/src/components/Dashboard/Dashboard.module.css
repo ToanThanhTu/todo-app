@@ -1,3 +1,133 @@
+.features {
+  padding-left: 24px;
+}
+
 .features > li {
-  margin: 5px 0;
+  font-size: 0.8rem;
+  margin: 4px 0;
+}
+
+.h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+}
+
+.introAndTodoList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.intro {
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.activeTodoListContainer {
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.activeTodoList {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.todoName {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.categoryName {
+  margin: 0;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.progressAndCompleted {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.progress {
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.progressGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.statusContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.status {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.completedTodoList {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.completedItems {
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.noTodos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  color: #828282;
 }
