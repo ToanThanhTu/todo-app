@@ -1,0 +1,35 @@
+.h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--primary)
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputLabel {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.error {
+  color: var(--destructive);
+}
+
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  background-color: var(--primary);
+  color: var(--foreground-secondary);
+  font-weight: 500;
+}

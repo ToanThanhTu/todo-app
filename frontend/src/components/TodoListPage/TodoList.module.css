@@ -1,14 +1,26 @@
-.filters {
+.addButtonsContainer {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
 }
 
-.deleteBtn {
-  border: 1px solid red;
-  color: red;
-  background-color: white;
-  padding: 5px;
-  margin-left: 5px;
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.categoryFilterContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.todoList {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .list {
@@ -49,7 +61,7 @@
   background-color: var(--primary-color-light);
 }
 
-@media (max-width: 940px) {
+@media (max-width: 1024px) {
   .filters {
     display: block;
   }

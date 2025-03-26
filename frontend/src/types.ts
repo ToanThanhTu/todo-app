@@ -26,13 +26,13 @@ export interface TodoItem {
   id: string
   content: string
   category: Category
-  status: string
+  status: Status
 }
 
 export interface NewTodoItem {
   content: string
   categoryId: Category["id"]
-  status: string
+  status: Status
 }
 
 export enum Status {
@@ -47,7 +47,7 @@ export interface Filter {
 }
 
 export enum StatusFilterSelect {
-  ALL = "ALL",
+  ALL = "All",
   ACTIVE = "Active",
   COMPLETED = "Completed",
   CANCELLED = "Cancelled",

@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Filter, StatusFilterSelect } from "@/types";
 import { AppThunk } from "@/store";
 
-const initialState = { category: '', status: StatusFilterSelect.ACTIVE };
+const initialState = { category: '', status: StatusFilterSelect.ALL };
 
 const filterSlice = createSlice({
   name: "filter",

@@ -6,6 +6,8 @@ import HomeIcon from "@mui/icons-material/Home"
 import PendingActionsIcon from "@mui/icons-material/PendingActions"
 import AssignmentIcon from "@mui/icons-material/Assignment"
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn"
+import { Tile, TileContent, TileHeader } from "@/components/Tile/Tile"
+import Todo from "@/components/TodoItem/TodoItem"
 
 interface Props {
   user: User
@@ -29,97 +31,101 @@ export default function Dashboard({ user, todoList }: Props) {
 
       <section className={styles.dashboard}>
         <div className={styles.introAndTodoList}>
-          <article className={styles.intro}>
-            <div className={styles.headerContainer}>
-              <HomeIcon color="disabled" style={{ fontSize: "1.5rem" }} />
-              <h2 className={styles.h2}>In this ToDo App, you can:</h2>
-            </div>
-            <ul className={styles.features}>
-              {!isUserLoggedIn && <li>Create and login with a new user account.</li>}
-              <li>Create and delete categories.</li>
-              <li>Create ToDo items and update their status.</li>
-              <li>Filter ToDo items based on categories and statuses.</li>
-              <li>Check your progress on the dashboard.</li>
-            </ul>
-          </article>
+          <Tile>
+            <TileHeader
+              title="In this ToDo App, you can:"
+              icon={<HomeIcon color="disabled" style={{ fontSize: "1.5rem" }} />}
+            />
 
-          <article className={styles.activeTodoListContainer}>
-            <div className={styles.headerContainer}>
-              <PendingActionsIcon color="disabled" style={{ fontSize: "1.5rem" }} />
-              <h2 className={styles.h2}>To-Do</h2>
-            </div>
-
-            {activeTodos.length > 0 ? (
-              <ul className={styles.activeTodoList}>
-                {activeTodos.map((todo) => (
-                  <li key={todo.id} className={styles.todoItem}>
-                    <div className={styles.todoItemDescription}>
-                      <h3 className={styles.todoName}>{todo.content}</h3>
-                      <p className={styles.categoryName}>{todo.category.name}</p>
-                    </div>
-
-                    <TripOriginOutlinedIcon color="primary" />
-                  </li>
-                ))}
+            <TileContent>
+              <ul className={styles.features}>
+                {!isUserLoggedIn && <li>Create and login with a new user account.</li>}
+                <li>Create and delete categories.</li>
+                <li>Create ToDo items and update their status.</li>
+                <li>Filter ToDo items based on categories and statuses.</li>
+                <li>Check your progress on the dashboard.</li>
               </ul>
-            ) : (
-              <p className={styles.noTodos}>All done! Great work!</p>
-            )}
-          </article>
+            </TileContent>
+          </Tile>
+
+          <Tile>
+            <TileHeader
+              title="To-Do"
+              icon={<PendingActionsIcon color="disabled" style={{ fontSize: "1.5rem" }} />}
+            />
+
+            <TileContent>
+              {activeTodos.length > 0 ? (
+                <ul className={styles.activeTodoList}>
+                  {activeTodos.map((todo) => (
+                    <Todo key={todo.id} todoItem={todo} />
+                  ))}
+                </ul>
+              ) : (
+                <p className={styles.noTodos}>All done! Great work!</p>
+              )}
+            </TileContent>
+          </Tile>
         </div>
 
         <div className={styles.progressAndCompleted}>
-          <article className={styles.progress}>
-            <div className={styles.headerContainer}>
-              <AssignmentIcon color="disabled" style={{ fontSize: "1.5rem" }} />
-              <h2 className={styles.h2}>ToDo Status</h2>
+          <Tile>
+            <div className={styles.progressHeader}>
+              <TileHeader
+                title="ToDo Status"
+                icon={<AssignmentIcon color="disabled" style={{ fontSize: "1.5rem" }} />}
+              />
+              <p className={styles.total}>Total: {todoList.length} items</p>
             </div>
-            <div className={styles.progressGrid}>
-              <div>
-                <p>{activeTodos.length}</p>
 
-                <div className={styles.statusContainer}>
-                  <CircleIcon color="primary" style={{ fontSize: "0.8rem" }} />
-                  <h3 className={styles.status}>Active</h3>
-                </div>
-              </div>
-              <div>
-                <p>{completedTodos.length}</p>
+            <TileContent>
+              <div className={styles.progressGrid}>
+                <div>
+                  <p>{activeTodos.length}</p>
 
-                <div className={styles.statusContainer}>
-                  <CircleIcon color="success" style={{ fontSize: "0.8rem" }} />
-                  <h3 className={styles.status}>Completed</h3>
-                </div>
-              </div>
-              <div>
-                <p>{cancelledTodos.length}</p>
-
-                <div className={styles.statusContainer}>
-                  <CircleIcon color="error" style={{ fontSize: "0.8rem" }} />
-                  <h3 className={styles.status}>Cancelled</h3>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article className={styles.completedItems}>
-            <div className={styles.headerContainer}>
-              <AssignmentTurnedInIcon color="disabled" style={{ fontSize: "1.5rem" }} />
-              <h2 className={styles.h2}>Completed Items</h2>
-            </div>
-            <ul className={styles.completedTodoList}>
-              {completedTodos.map((todo) => (
-                <li key={todo.id} className={styles.todoItem}>
-                  <div className={styles.todoItemDescription}>
-                    <h3 className={styles.todoName}>{todo.content}</h3>
-                    <p className={styles.categoryName}>{todo.category.name}</p>
+                  <div className={styles.statusContainer}>
+                    <CircleIcon color="primary" style={{ fontSize: "0.8rem" }} />
+                    <h3 className={styles.status}>Active</h3>
                   </div>
+                </div>
+                <div>
+                  <p>{completedTodos.length}</p>
 
-                  <TripOriginOutlinedIcon color="success" />
-                </li>
-              ))}
-            </ul>
-          </article>
+                  <div className={styles.statusContainer}>
+                    <CircleIcon color="success" style={{ fontSize: "0.8rem" }} />
+                    <h3 className={styles.status}>Completed</h3>
+                  </div>
+                </div>
+                <div>
+                  <p>{cancelledTodos.length}</p>
+
+                  <div className={styles.statusContainer}>
+                    <CircleIcon color="error" style={{ fontSize: "0.8rem" }} />
+                    <h3 className={styles.status}>Cancelled</h3>
+                  </div>
+                </div>
+              </div>
+            </TileContent>
+          </Tile>
+
+          <Tile>
+            <TileHeader
+              title="Completed Items"
+              icon={<AssignmentTurnedInIcon color="disabled" style={{ fontSize: "1.5rem" }} />}
+            />
+
+            <TileContent>
+              {completedTodos.length > 0 ? (
+                <ul className={styles.completedTodoList}>
+                  {completedTodos.map((todo) => (
+                    <Todo key={todo.id} todoItem={todo} />
+                  ))}
+                </ul>
+              ) : (
+                <p className={styles.noTodos}>Nothing done yet!</p>
+              )}
+            </TileContent>
+          </Tile>
         </div>
       </section>
     </div>

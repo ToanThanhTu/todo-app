@@ -2,7 +2,7 @@ import { useRef } from "react"
 
 import { addTodoItem } from "../../reducers/todoListReducer"
 
-import newTodoStyles from "./NewTodo.module.css"
+import styles from "./Form.module.css"
 
 import ToggleableModal from "../Modal/ToggleableModal"
 import { useAppDispatch, useAppSelector } from "@/hooks"
@@ -17,7 +17,7 @@ function NewTodoButton() {
   }
 
   return (
-    <ToggleableModal buttonName="New ToDo Item" ref={todoFormRef}>
+    <ToggleableModal buttonName="Add ToDo" ref={todoFormRef}>
       <NewTodoForm onClose={handleClose} />
     </ToggleableModal>
   )
@@ -42,17 +42,23 @@ function NewTodoForm({ onClose }: { onClose: () => void }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="modal">
-      <h1>New ToDo Task</h1>
+      <h1 className={styles.h1}>New ToDo Task</h1>
 
-      <div className={newTodoStyles.inputs}>
-        <label htmlFor="task-content">Task content:</label>
-        <input id="task-content" {...register("content", { required: true, minLength: 3 })} />
-        {errors.content?.type === "required" && <p>Content is required</p>}
-        {errors.content?.type === "minLength" && <p>Content must be at least 3 characters long</p>}
+      <div className={styles.inputContainer}>
+        <label htmlFor="task-content" className={styles.inputLabel}>
+          Task content:
+        </label>
+        <input id="task-content" placeholder="What is your task?" {...register("content", { required: true, minLength: 3 })} />
+        {errors.content?.type === "required" && (
+          <span className={styles.error}>Content is required</span>
+        )}
+        {errors.content?.type === "minLength" && (
+          <span className={styles.error}>Content must be at least 3 characters long</span>
+        )}
       </div>
 
-      <div className={newTodoStyles.inputs}>
-        <label htmlFor="taskCategory">Task category:</label>
+      <div className={styles.inputContainer}>
+        <label htmlFor="taskCategory" className={styles.inputLabel}>Task category:</label>
         <select id="taskCategory" {...register("categoryId", { required: true })}>
           {categories.map((category) => (
             <option key={category.id} value={category.id}>
@@ -60,12 +66,14 @@ function NewTodoForm({ onClose }: { onClose: () => void }) {
             </option>
           ))}
         </select>
-        {errors.categoryId && <span>Please select a category</span>}
+        {errors.categoryId && <span className={styles.error}>Please select a category</span>}
       </div>
 
-      <div className="buttonsContainer">
-        <button type="submit">Submit</button>
-        <button type="button" onClick={onClose}>
+      <div className={styles.buttonsContainer}>
+        <button type="submit" className={styles.btn}>
+          Submit
+        </button>
+        <button type="button" onClick={onClose} className={styles.btn}>
           Close
         </button>
       </div>

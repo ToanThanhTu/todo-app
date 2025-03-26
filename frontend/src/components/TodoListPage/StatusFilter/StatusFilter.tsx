@@ -1,5 +1,5 @@
 import { StatusFilterSelect } from "@/types"
-import statusFilterStyles from "./StatusFilter.module.css"
+import styles from "./StatusFilter.module.css"
 import { useAppSelector } from "@/hooks"
 
 function StatusFilter({
@@ -11,22 +11,32 @@ function StatusFilter({
 
   return (
     <>
-      <div className={`${statusFilterStyles.buttonsContainer}`}>
+      <div className={`${styles.buttonsContainer}`}>
         {Object.entries(StatusFilterSelect).map(([status, value]) => (
           <button
-            className={`${statusFilterStyles.button} ${
-              value === currentStatus && statusFilterStyles.selected
-            }`}
             key={status}
             onClick={(event) => setFilter(event.currentTarget.value, "status")}
             value={value}
+            className={currentStatus === value ? styles.active : styles.inactive}
+            style={
+              currentStatus === value
+                ? value === StatusFilterSelect.ACTIVE
+                  ? { color: "var(--status-active)" }
+                  : value === StatusFilterSelect.COMPLETED
+                  ? { color: "var(--status-completed)" }
+                  : value === StatusFilterSelect.CANCELLED
+                  ? { color: "var(--status-cancelled)" }
+                  : { color: "var(--primary)" }
+                : {}
+            }
           >
             {value}
           </button>
         ))}
       </div>
 
-      <div className={statusFilterStyles.dropdown}>
+      {/* Status Select for Smaller Screens */}
+      <div className={styles.dropdown}>
         <label htmlFor="status-dropdown">Status:</label>
         <select
           name="status"

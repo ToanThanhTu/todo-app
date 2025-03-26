@@ -1,73 +1,43 @@
-import { useRef } from "react";
-
-import ToggleableModal from "../Modal/ToggleableModal";
-import NewCategoryForm from "../NewCategoryForm/NewCategoryForm";
-
-import sideBarStyles from "./SideBar.module.css";
-import { Category, Status, TodoItem } from "@/types";
+import LogoutIcon from "@mui/icons-material/Logout"
+import styles from "./SideBar.module.css"
+import { User } from "@/types"
+import Nav from "@/components/Nav/Nav"
+import { useAppDispatch } from "@/hooks"
+import { logout } from "@/reducers/userReducer"
+import { useNavigate } from "react-router-dom"
 
 interface Props {
-  categories: Category[];
-  todoList: TodoItem[];
-  username: string;
+  user: User
 }
 
-function SideBar({ categories, todoList, username }: Props) {
-  const completedTasks = todoList.filter(
-    (item) => item.status === Status.COMPLETED
-  ).length;
+function SideBar({ user }: Props) {
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
-  const activeTasks = todoList.filter(
-    (item) => item.status === Status.ACTIVE
-  ).length;
-
-  const categoryFormRef = useRef<{ toggleShowModal: () => void } | null>(null)
-
-  const handleClose = () => {
-    categoryFormRef.current?.toggleShowModal();
-  };
+  const handleLogout = () => {
+    dispatch(logout())
+    navigate("/")
+  }
 
   return (
-    <div className={sideBarStyles.sidebar}>
-      <div className={sideBarStyles.userinfo}>
-        <h3>{username}</h3>
+    <div>
+      <div className={styles.sideBar}>
+        <div>
+          <section className={styles.userInfo}>
+            <img src="/avatar.webp" alt="placeholder avatar" className={styles.avatar} />
+            <span>{user.username}</span>
+          </section>
 
-        <table className={sideBarStyles.stats}>
-          <tbody>
-            <tr className={sideBarStyles.numbersRow}>
-              <td>{activeTasks}</td>
-              <td>{completedTasks}</td>
-              <td>{todoList.length}</td>
-            </tr>
-            <tr className={sideBarStyles.tableTexts}>
-              <td>Active</td>
-              <td>Completed</td>
-              <td>Total</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          <Nav />
+        </div>
 
-      <div className="divider"></div>
-
-      <div className={sideBarStyles.categories}>
-        <h3>Categories</h3>
-
-        <ul>
-          {categories.map((category) => (
-            <li key={category.id} className={sideBarStyles.category}>{category.name}</li>
-          ))}
-        </ul>
-
-        <ToggleableModal
-          buttonName="New category"
-          ref={categoryFormRef}
-        >
-          <NewCategoryForm onClose={handleClose} categories={categories} />
-        </ToggleableModal>
+        <button className={styles.logoutBtn} onClick={handleLogout}>
+          <LogoutIcon />
+          <span>Logout</span>
+        </button>
       </div>
     </div>
-  );
+  )
 }
 
-export default SideBar;
+export default SideBar

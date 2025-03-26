@@ -22,7 +22,7 @@ function CategoryFilter({
         Category:
       </label>
       <select name="categories" id="categories" onChange={handleOnChange} value={currentCategory}>
-        <option value="">ALL</option>
+        <option value="">All Categories</option>
         {categories.map((category) => (
           <option key={category.id} value={category.id}>
             {category.name}

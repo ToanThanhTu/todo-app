@@ -3,8 +3,9 @@
   gap: 12px;
   justify-content: center;
   align-items: center;
-  padding: 24px;
-  border-top: 2px solid var(--divider-color);
+  padding: 12px;
+  margin-top: 32px;
+  border-top: 2px solid var(--divider);
 }
 
 .description {
@@ -12,10 +13,12 @@
   flex-direction: column;
   align-items: end;
   justify-content: center;
+  font-size: 0.8rem;
+  gap: 4px;
 }
 
 .description > p {
-  margin: 4px;
+  margin: 0;
 }
 
 .sourcecode {
@@ -27,8 +30,8 @@
 }
 
 .divider {
-  height: 50px;
-  border-right: 2px solid var(--divider-color);
+  height: 44px;
+  border-right: 2px solid var(--divider);
 }
 
 .socials {

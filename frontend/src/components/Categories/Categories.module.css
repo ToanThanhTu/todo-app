@@ -1,0 +1,13 @@
+.deleteBtn {
+  border: 1px solid var(--destructive);
+  color: var(--destructive);
+  background-color: white;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.deleteBtn:hover {
+  background-color: var(--destructive);
+  color: var(--white);
+}

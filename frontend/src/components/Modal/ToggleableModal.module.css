@@ -1,11 +1,17 @@
 .button {
   margin: 10px 0;
-  padding: 5px 10px;
-  background: linear-gradient(.25turn, var(--primary-color-light), var(--primary-color-dark));
-  border-radius: 5px;
-  /* box-shadow: 2px 2px 5px 0px var(--primary-color-darker); */
-  color: var(--text-color-primary);
+  padding: 8px 16px;
+  background-color: var(--primary);
+  border-radius: 12px;
+  color: var(--foreground-secondary);
   z-index: 99;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: var(--background);
+  color: var(--primary);
+  outline: 1px solid var(--primary);
 }
 
 .layover {

@@ -12,40 +12,16 @@
   margin: 0;
 }
 
-.h2 {
-  font-size: 1rem;
-  margin: 0;
-}
-
 .dashboard {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 
-.headerContainer {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 8px;
-}
-
 .introAndTodoList {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-.intro {
-  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
-  padding: 24px;
-}
-
-.activeTodoListContainer {
-  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
-  padding: 24px;
 }
 
 .activeTodoList {
@@ -55,38 +31,21 @@
   gap: 12px;
 }
 
-.todoItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 4px;
-  padding: 16px;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-}
-
-.todoName {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.categoryName {
-  margin: 0;
-  font-size: 0.9rem;
-  font-style: italic;
-}
-
 .progressAndCompleted {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.progress {
-  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
-  padding: 24px;
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total {
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .progressGrid {
@@ -113,12 +72,6 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-}
-
-.completedItems {
-  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
-  padding: 24px;
 }
 
 .noTodos {

@@ -1,0 +1,30 @@
+.statusBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 44px;
+  background-color: var(--background-secondary);
+  font-size: 0.8rem;
+}
+
+.active {
+  background-color: var(--white);
+  border-radius: 44px;
+  padding: 4px 12px;
+  font-weight: 600;
+}
+
+.inactive {
+  border-radius: 44px;
+  padding: 4px 12px;
+  background-color: transparent;
+}
+
+.inactive:hover {
+  cursor: pointer;
+  background-color: var(--status-buttons-hover);
+  border-radius: 44px;
+  padding: 4px 12px;
+}

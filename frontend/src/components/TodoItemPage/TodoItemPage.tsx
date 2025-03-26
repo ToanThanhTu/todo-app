@@ -12,7 +12,7 @@ export default function TodoItemPage({ todoItem }: Props) {
     return <div>Todo item not found.</div>
   }
 
-  const category = categories.find((category) => category.id === todoItem.categoryId)
+  const category = categories.find((category) => category.id === todoItem.category.id)
 
   return (
     <div>
