@@ -17,7 +17,7 @@ function TodoList({ todoList }: { todoList: TodoItem[] }) {
   const categories = useAppSelector((state) => state.categories)
 
   const displayTodoList = useMemo(() => {
-    // conditional todos display for when filter is ALL for either category or status or both
+    // conditional todos display for either category or status or both
     return todoList.filter((item) => {
       // Skip items with invalid categories
       if (!item.category || !item.category.id) return false

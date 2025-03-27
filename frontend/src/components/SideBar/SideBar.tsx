@@ -5,6 +5,8 @@ import Nav from "@/components/Nav/Nav"
 import { useAppDispatch } from "@/hooks"
 import { logout } from "@/reducers/userReducer"
 import { useNavigate } from "react-router-dom"
+import NewUserButton from "@/components/Form/NewUser"
+import Login from "@/components/Form/Login"
 
 interface Props {
   user: User
@@ -22,19 +24,28 @@ function SideBar({ user }: Props) {
   return (
     <div>
       <div className={styles.sideBar}>
-        <div>
-          <section className={styles.userInfo}>
-            <img src="/avatar.webp" alt="placeholder avatar" className={styles.avatar} />
-            <span>{user.username}</span>
-          </section>
+        {user.id !== "" ? (
+          <>
+            <div>
+              <section className={styles.userInfo}>
+                <img src="/avatar.webp" alt="placeholder avatar" className={styles.avatar} />
+                <span>{user.username}</span>
+              </section>
 
-          <Nav />
-        </div>
+              <Nav />
+            </div>
 
-        <button className={styles.logoutBtn} onClick={handleLogout}>
-          <LogoutIcon />
-          <span>Logout</span>
-        </button>
+            <button className={styles.logoutBtn} onClick={handleLogout}>
+              <LogoutIcon />
+              <span>Logout</span>
+            </button>
+          </>
+        ) : (
+          <div className={styles.loginContainer}>
+            <Login />
+            <NewUserButton />
+          </div>
+        )}
       </div>
     </div>
   )

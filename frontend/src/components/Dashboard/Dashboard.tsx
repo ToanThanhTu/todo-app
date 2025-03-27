@@ -20,9 +20,9 @@ export default function Dashboard({ user, todoList }: Props) {
   const completedTodos = todoList.filter((todo) => todo.status === Status.COMPLETED)
 
   return (
-    <div>
+    <div className={styles.dashboardContainer}>
       {isUserLoggedIn ? (
-        <h1>Welcome back, {user.username}!</h1>
+        <h1 className={styles.h1}>Welcome back, {user.username}!</h1>
       ) : (
         <h1 className={styles.h1}>Welcome to your simple ToDo App</h1>
       )}
@@ -46,60 +46,64 @@ export default function Dashboard({ user, todoList }: Props) {
             </TileContent>
           </Tile>
 
-          <Tile>
-            <TileHeader
-              title="To-Do"
-              icon={<PendingActionsIcon color="disabled" style={{ fontSize: "1.5rem" }} />}
-            />
-
-            <TileContent>
-              {activeTodos.length > 0 ? (
-                <ul className={styles.activeTodoList}>
-                  {activeTodos.map((todo) => (
-                    <Todo key={todo.id} todoItem={todo} />
-                  ))}
-                </ul>
-              ) : (
-                <p className={styles.noTodos}>All done! Great work!</p>
-              )}
-            </TileContent>
-          </Tile>
-        </div>
-
-        <div className={styles.progressAndCompleted}>
-          <Tile>
-            <div className={styles.progressHeader}>
+          {isUserLoggedIn && (
+            <Tile>
               <TileHeader
-                title="ToDo Status"
-                icon={<AssignmentIcon color="disabled" style={{ fontSize: "1.5rem" }} />}
+                title="To-Do"
+                icon={<PendingActionsIcon color="disabled" style={{ fontSize: "1.5rem" }} />}
               />
-              <p className={styles.total}>Total: {todoList.length} items</p>
-            </div>
 
-            <TileContent>
-              <Progress todoList={todoList} />
-            </TileContent>
-          </Tile>
-
-          <Tile>
-            <TileHeader
-              title="Completed Items"
-              icon={<AssignmentTurnedInIcon color="disabled" style={{ fontSize: "1.5rem" }} />}
-            />
-
-            <TileContent>
-              {completedTodos.length > 0 ? (
-                <ul className={styles.completedTodoList}>
-                  {completedTodos.map((todo) => (
-                    <Todo key={todo.id} todoItem={todo} />
-                  ))}
-                </ul>
-              ) : (
-                <p className={styles.noTodos}>Nothing done yet!</p>
-              )}
-            </TileContent>
-          </Tile>
+              <TileContent>
+                {activeTodos.length > 0 ? (
+                  <ul className={styles.activeTodoList}>
+                    {activeTodos.map((todo) => (
+                      <Todo key={todo.id} todoItem={todo} />
+                    ))}
+                  </ul>
+                ) : (
+                  <p className={styles.noTodos}>All done! Great work!</p>
+                )}
+              </TileContent>
+            </Tile>
+          )}
         </div>
+
+        {isUserLoggedIn && (
+          <div className={styles.progressAndCompleted}>
+            <Tile>
+              <div className={styles.progressHeader}>
+                <TileHeader
+                  title="ToDo Status"
+                  icon={<AssignmentIcon color="disabled" style={{ fontSize: "1.5rem" }} />}
+                />
+                <p className={styles.total}>Total: {todoList.length} items</p>
+              </div>
+
+              <TileContent>
+                <Progress todoList={todoList} />
+              </TileContent>
+            </Tile>
+
+            <Tile>
+              <TileHeader
+                title="Completed Items"
+                icon={<AssignmentTurnedInIcon color="disabled" style={{ fontSize: "1.5rem" }} />}
+              />
+
+              <TileContent>
+                {completedTodos.length > 0 ? (
+                  <ul className={styles.completedTodoList}>
+                    {completedTodos.map((todo) => (
+                      <Todo key={todo.id} todoItem={todo} />
+                    ))}
+                  </ul>
+                ) : (
+                  <p className={styles.noTodos}>Nothing done yet!</p>
+                )}
+              </TileContent>
+            </Tile>
+          </div>
+        )}
       </section>
     </div>
   )

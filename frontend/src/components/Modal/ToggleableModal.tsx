@@ -1,15 +1,32 @@
-import { useImperativeHandle, useState, PropsWithChildren, RefObject, useEffect } from "react"
+import {
+  useImperativeHandle,
+  useState,
+  PropsWithChildren,
+  RefObject,
+  useEffect,
+  CSSProperties,
+} from "react"
 import { createPortal } from "react-dom"
 
 import styles from "./ToggleableModal.module.css"
 
 interface Props {
   buttonName: string
-  ref: RefObject<{ toggleShowModal: () => void} | null>
+  btnStyle?: CSSProperties
+  handleMouseEnter?: () => void
+  handleMouseLeave?: () => void
+  ref: RefObject<{ toggleShowModal: () => void } | null>
 }
 
 // ToggleableModal component for 'Create new user', 'New category', 'New ToDo Item' buttons
-export default function ToggleableModal({ buttonName, children, ref }: PropsWithChildren<Props>) {
+export default function ToggleableModal({
+  buttonName,
+  btnStyle,
+  handleMouseEnter,
+  handleMouseLeave,
+  children,
+  ref,
+}: PropsWithChildren<Props>) {
   const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
@@ -33,8 +50,14 @@ export default function ToggleableModal({ buttonName, children, ref }: PropsWith
   })
 
   return (
-    <div className={styles.modal}>
-      <button className={styles.button} onClick={() => setShowModal(true)}>
+    <div>
+      <button
+        className={styles.button}
+        onClick={() => setShowModal(true)}
+        style={btnStyle}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         {buttonName}
       </button>
       {showModal && createPortal(children, document.body)}

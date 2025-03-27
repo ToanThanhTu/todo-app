@@ -12,3 +12,24 @@
   font-size: 1.5rem;
   color: var(--primary);
 }
+
+.dateContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  gap: 2px;
+}
+
+.weekDay {
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.date {
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--status-active);
+}

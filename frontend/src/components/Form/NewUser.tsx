@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 import { create } from "../../reducers/userReducer"
 
@@ -7,17 +7,34 @@ import { useAppDispatch } from "@/hooks"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { LoginCredentials } from "@/types"
 
-import NewUserFormStyles from "./NewUser.module.css"
+import styles from "./Form.module.css"
 
 function NewUserButton() {
   const newUserFormRef = useRef<{ toggleShowModal: () => void } | null>(null)
+
+  const [isHovered, setIsHovered] = useState(false)
+
+  const handleMouseEnter = () => setIsHovered(true)
+  const handleMouseLeave = () => setIsHovered(false)
 
   const handleClose = () => {
     newUserFormRef.current?.toggleShowModal()
   }
 
   return (
-    <ToggleableModal buttonName="Create new user" ref={newUserFormRef}>
+    <ToggleableModal
+      buttonName="Create new user"
+      ref={newUserFormRef}
+      btnStyle={{
+        backgroundColor: isHovered ? "transparent" : "var(--background-secondary)",
+        color: isHovered ? "var(--background-secondary)" : "var(--primary)",
+        outline: isHovered ? "2px solid var(--background-secondary)" : "",
+        fontWeight: "600",
+        padding: "12px 24px",
+      }}
+      handleMouseEnter={handleMouseEnter}
+      handleMouseLeave={handleMouseLeave}
+    >
       <NewUserForm onClose={handleClose} />
     </ToggleableModal>
   )
@@ -41,43 +58,49 @@ function NewUserForm({ onClose }: { onClose: () => void }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="modal">
-      <h1>Create New User</h1>
+      <h1 className={styles.h1}>Create New User</h1>
 
-      <div>
-        <label htmlFor="new-username">Username:</label>
+      <div className={styles.inputContainer}>
+        <label htmlFor="new-username" className={styles.inputLabel}>
+          Username:
+        </label>
         <input
           id="username"
           placeholder="Username..."
           {...register("username", { required: true, minLength: 3, maxLength: 20 })}
         />
         {errors.username?.type === "required" && (
-          <p className={NewUserFormStyles.error}>Username is required</p>
+          <p className={styles.error}>Username is required</p>
         )}
         {errors.username?.type === "minLength" ||
           (errors.username?.type === "maxLength" && (
-            <p className={NewUserFormStyles.error}>Username must be between 3 and 20 characters</p>
+            <p className={styles.error}>Username must be between 3 and 20 characters</p>
           ))}
       </div>
 
-      <div>
-        <label htmlFor="new-password">Password:</label>
+      <div className={styles.inputContainer}>
+        <label htmlFor="new-password" className={styles.inputLabel}>
+          Password:
+        </label>
         <input
           id="password"
           placeholder="Password..."
           {...register("password", { required: true, minLength: 4, maxLength: 20 })}
         />
         {errors.password?.type === "required" && (
-          <p className={NewUserFormStyles.error}>Password is required</p>
+          <p className={styles.error}>Password is required</p>
         )}
         {errors.password?.type === "minLength" ||
           (errors.password?.type === "maxLength" && (
-            <p className={NewUserFormStyles.error}>Password must be between 4 and 20 characters</p>
+            <p className={styles.error}>Password must be between 4 and 20 characters</p>
           ))}
       </div>
 
-      <div className="buttonsContainer">
-        <button type="submit">Submit</button>
-        <button type="button" onClick={onClose}>
+      <div className={styles.buttonsContainer}>
+        <button type="submit" className={styles.btn}>
+          Submit
+        </button>
+        <button type="button" onClick={onClose} className={styles.btn}>
           Close
         </button>
       </div>

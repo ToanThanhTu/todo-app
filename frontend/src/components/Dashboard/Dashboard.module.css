@@ -1,14 +1,23 @@
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .features {
-  padding-left: 24px;
+  margin-left: 24px;
+  list-style: disc;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .features > li {
   font-size: 0.8rem;
-  margin: 4px 0;
 }
 
 .h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 0;
 }
 
