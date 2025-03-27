@@ -12,6 +12,7 @@ const todosRouter = require("./controllers/todos");
 const categoriesRouter = require("./controllers/categories");
 const usersRouter = require("./controllers/users");
 const loginRouter = require("./controllers/login");
+const emailsRouter = require("./controllers/emails");
 
 const mongoURL = config.MONGODB_URI;
 logger.info(`Connecting to ${mongoURL}`);
@@ -34,6 +35,7 @@ app.use("/api/todos", todosRouter);
 app.use("/api/categories", categoriesRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/login", loginRouter);
+app.use("/api/emails", emailsRouter);
 
 app.use(middleware.requestLogger);
 
