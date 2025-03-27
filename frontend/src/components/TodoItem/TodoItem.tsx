@@ -27,13 +27,14 @@ export default function Todo({ todoItem }: PropsWithChildren<Props>) {
         </div>
 
         <TripOriginOutlinedIcon
-          color={
-            todoItem.status === Status.ACTIVE
-              ? "primary"
-              : todoItem.status === Status.COMPLETED
-              ? "success"
-              : "error"
-          }
+          style={{
+            color:
+              todoItem.status === Status.ACTIVE
+                ? "var(--status-active)"
+                : todoItem.status === Status.COMPLETED
+                ? "var(--status-completed)"
+                : "var(--status-cancelled)",
+          }}
         />
       </div>
 

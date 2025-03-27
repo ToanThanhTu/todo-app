@@ -59,3 +59,9 @@ export interface Contact {
   display: string
   url: string
 }
+
+export interface ContactFormModel {
+  name: string
+  email: string
+  message: string
+}

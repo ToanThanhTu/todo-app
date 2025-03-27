@@ -11,3 +11,9 @@
   background-color: var(--destructive);
   color: var(--white);
 }
+
+.categoriesList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

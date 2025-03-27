@@ -8,7 +8,9 @@ interface TileProps {
 interface TileHeaderProps {
   title: string
   icon?: JSX.Element
+  deleteBtn?: JSX.Element
   style?: CSSProperties
+  fontSize?: string
 }
 
 interface TileContentProps {
@@ -23,11 +25,15 @@ function Tile({ style, children }: PropsWithChildren<TileProps>) {
   )
 }
 
-function TileHeader({ title, icon, style }: TileHeaderProps) {
+function TileHeader({ title, icon, style, fontSize, children }: PropsWithChildren<TileHeaderProps>) {
   return (
     <h2 className={tileStyles.h2} style={style}>
-      {icon}
-      <span>{title}</span>
+      <div className={tileStyles.title} style={{ fontSize }}>
+        {icon}
+        <span>{title}</span>
+      </div>
+
+      {children}
     </h2>
   )
 }

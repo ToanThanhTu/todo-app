@@ -15,8 +15,8 @@ export const contacts: Contact[] = [
   },
   {
     name: "LinkedIn",
-    display: "/in/thanh-toan-tu",
-    url: "https://www.linkedin.com/in/thanh-toan-tu/",
+    display: "/in/trevor-tu",
+    url: "https://www.linkedin.com/in/trevor-tu/",
     id: "f9ed"
   },
   {

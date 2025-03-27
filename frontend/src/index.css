@@ -28,14 +28,15 @@
   --status-buttons-hover: hsl(0 0% 98%);
 
   /* Status colors */
-  --status-active: hsl(207, 90%, 61%);
-  --status-completed: hsl(123, 38%, 57%);
-  --status-cancelled: hsl(4, 90%, 58%);
+  --status-active: hsl(201, 98%, 41%);
+  --status-completed: hsl(123, 43%, 39%);
+  --status-cancelled: hsl(0, 65%, 51%);
 
   /* Others */
   --white: hsl(0 0% 98%);
   --black: hsl(240 10% 3.9%);
   --destructive: hsl(4, 90%, 58%);
+  --gray: hsl(0, 0%, 84%);
 }
 
 *,
@@ -54,7 +55,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  margin: 24px 8px;
 }
 
 .app {
@@ -75,6 +76,10 @@ main {
   flex-grow: 2;
   padding: 24px 24px 0 24px;
   margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: space-between;
 }
 
 button {
@@ -91,19 +96,30 @@ a {
 }
 
 select,
-input {
+input,
+textarea {
   margin: 0;
   border-radius: 6px;
   border: none;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-input {
+select {
+  padding: 8px 12px;
+}
+
+input,
+textarea {
   padding: 12px;
 }
 
-select {
-  padding: 8px 12px;
+textarea {
+  min-height: 120px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
 }
 
 .divider {
@@ -153,4 +169,79 @@ select {
     flex-direction: column-reverse;
     padding: 0;
   }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*
+ * react-circular-progressbar styles
+ * All of the styles in this file are configurable!
+ */
+
+.CircularProgressbar {
+  /*
+   * This fixes an issue where the CircularProgressbar svg has
+   * 0 width inside a "display: flex" container, and thus not visible.
+   */
+  width: 100%;
+  /*
+   * This fixes a centering issue with CircularProgressbarWithChildren:
+   * https://github.com/kevinsqi/react-circular-progressbar/issues/94
+   */
+  vertical-align: middle;
+}
+
+.CircularProgressbar .CircularProgressbar-path {
+  stroke: hsl(201, 55%, 51%);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease 0s;
+}
+
+.CircularProgressbar .CircularProgressbar-trail {
+  stroke: hsl(0, 0%, 84%);
+  /* Used when trail is not full diameter, i.e. when props.circleRatio is set */
+  stroke-linecap: round;
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+  fill: hsl(201, 55%, 51%);
+  font-size: 20px;
+  dominant-baseline: middle;
+  text-anchor: middle;
+}
+
+.CircularProgressbar .CircularProgressbar-background {
+  fill: hsl(0, 0%, 84%);
+}
+
+/*
+ * Sample background styles. Use these with e.g.:
+ *
+ *   <CircularProgressbar
+ *     className="CircularProgressbar-inverted"
+ *     background
+ *     percentage={50}
+ *   />
+ */
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-background {
+  fill: hsl(201, 55%, 51%);
+}
+
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-text {
+  fill: hsl(0, 0%, 100%);
+}
+
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-path {
+  stroke: hsl(0, 0%, 100%);
+}
+
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {
+  stroke: transparent;
 }

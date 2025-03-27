@@ -1,13 +1,12 @@
 import { Status, TodoItem, User } from "@/types"
 import styles from "./Dashboard.module.css"
-import TripOriginOutlinedIcon from "@mui/icons-material/TripOriginOutlined"
-import CircleIcon from "@mui/icons-material/Circle"
 import HomeIcon from "@mui/icons-material/Home"
 import PendingActionsIcon from "@mui/icons-material/PendingActions"
 import AssignmentIcon from "@mui/icons-material/Assignment"
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn"
 import { Tile, TileContent, TileHeader } from "@/components/Tile/Tile"
 import Todo from "@/components/TodoItem/TodoItem"
+import Progress from "@/components/Progress/Progress"
 
 interface Props {
   user: User
@@ -19,7 +18,6 @@ export default function Dashboard({ user, todoList }: Props) {
 
   const activeTodos = todoList.filter((todo) => todo.status === Status.ACTIVE)
   const completedTodos = todoList.filter((todo) => todo.status === Status.COMPLETED)
-  const cancelledTodos = todoList.filter((todo) => todo.status === Status.CANCELLED)
 
   return (
     <div>
@@ -79,32 +77,7 @@ export default function Dashboard({ user, todoList }: Props) {
             </div>
 
             <TileContent>
-              <div className={styles.progressGrid}>
-                <div>
-                  <p>{activeTodos.length}</p>
-
-                  <div className={styles.statusContainer}>
-                    <CircleIcon color="primary" style={{ fontSize: "0.8rem" }} />
-                    <h3 className={styles.status}>Active</h3>
-                  </div>
-                </div>
-                <div>
-                  <p>{completedTodos.length}</p>
-
-                  <div className={styles.statusContainer}>
-                    <CircleIcon color="success" style={{ fontSize: "0.8rem" }} />
-                    <h3 className={styles.status}>Completed</h3>
-                  </div>
-                </div>
-                <div>
-                  <p>{cancelledTodos.length}</p>
-
-                  <div className={styles.statusContainer}>
-                    <CircleIcon color="error" style={{ fontSize: "0.8rem" }} />
-                    <h3 className={styles.status}>Cancelled</h3>
-                  </div>
-                </div>
-              </div>
+              <Progress todoList={todoList} />
             </TileContent>
           </Tile>
 

@@ -3,6 +3,10 @@ import styles from "./Categories.module.css"
 import { toast } from "sonner"
 import { deleteTodo } from "@/reducers/todoListReducer"
 import { deleteCategory } from "@/reducers/categoryReducer"
+import { Tile, TileContent, TileHeader } from "@/components/Tile/Tile"
+import CategoryIcon from "@mui/icons-material/Category"
+import NewCategoryButton from "@/components/Form/NewCategory"
+import Progress from "@/components/Progress/Progress"
 
 export default function Categories() {
   const dispatch = useAppDispatch()
@@ -33,19 +37,47 @@ export default function Categories() {
   }
 
   return (
-    <div>
-      <h2>Categories</h2>
+    <Tile style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <TileHeader title="Categories" icon={<CategoryIcon />} style={{ fontSize: "1.2rem" }} />
 
-      <ul>
+      <NewCategoryButton categories={categories} />
+
+      <ul className={styles.categoriesList}>
         {categories.map((category) => (
           <li key={category.id}>
-            <span>{category.name}</span>
-            <button className={styles.deleteBtn} onClick={() => handleDeleteCategory(category.id)}>
-              Delete Category
-            </button>
+            <Tile
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "16px",
+                border: "1px solid var(--border)",
+              }}
+            >
+              <TileHeader
+                title={category.name}
+                children={
+                  <button
+                    className={styles.deleteBtn}
+                    onClick={() => handleDeleteCategory(category.id)}
+                  >
+                    Delete Category
+                  </button>
+                }
+              />
+
+              <div className="divider" />
+
+              <TileContent>
+                <ul>
+                  <Progress
+                    todoList={todoList.filter((todo) => todo.category.id === category.id)}
+                  />
+                </ul>
+              </TileContent>
+            </Tile>
           </li>
         ))}
       </ul>
-    </div>
+    </Tile>
   )
 }

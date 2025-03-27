@@ -6,8 +6,7 @@ import { initializeCategories } from "./reducers/categoryReducer"
 import { initializeUser } from "./reducers/userReducer"
 import SideBar from "./components/SideBar/SideBar"
 import TodoList from "./components/TodoListPage/TodoList"
-import Contacts from "./components/Contacts/Contacts"
-import Login from "./components/Login/Login"
+import Contact from "./components/Contact/Contact"
 import TodoItemPage from "@/components/TodoItemPage/TodoItemPage"
 import { Toaster } from "@/components/shadcn/sonner"
 import { toast } from "sonner"
@@ -50,7 +49,7 @@ export default function App() {
 
           <section className="content">
             <Routes>
-              <Route path="/contacts" element={<Contacts />} />
+              <Route path="/contacts" element={<Contact />} />
               <Route path="/categories" element={<Categories />} />
               <Route path="/todos/:id" element={<TodoItemPage todoItem={todoItem} />} />
               <Route path="/todos" element={<TodoList todoList={todoList} />} />
