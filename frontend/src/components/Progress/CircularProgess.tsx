@@ -30,7 +30,7 @@ export default function CircularProgess({ percentage, count, status }: Props) {
 
   return (
     <div className={styles.progressCount}>
-      <div style={{ width: "80px", height: "80px" }}>
+      <div className={styles.circleContainer}>
         <CircularProgressbar
           value={percentage}
           text={`${count}`}

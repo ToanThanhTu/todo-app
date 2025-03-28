@@ -3,7 +3,7 @@ import StatusFilter from "./StatusFilter/StatusFilter"
 import NewTodoButton from "../Form/NewTodo"
 import { applyFilter } from "../../reducers/filterReducer"
 import styles from "./TodoList.module.css"
-import { Status, StatusFilterSelect, TodoItem } from "@/types"
+import { Status, StatusFilterSelect } from "@/types"
 import { useAppDispatch, useAppSelector } from "@/hooks"
 import { useMemo } from "react"
 import { Tile, TileContent, TileHeader } from "@/components/Tile/Tile"
@@ -11,10 +11,11 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted"
 import Todo from "@/components/TodoItem/TodoItem"
 import NewCategoryButton from "@/components/Form/NewCategory"
 
-function TodoList({ todoList }: { todoList: TodoItem[] }) {
+function TodoList() {
   const dispatch = useAppDispatch()
   const filter = useAppSelector((state) => state.filter)
   const categories = useAppSelector((state) => state.categories)
+  const todoList = useAppSelector((state) => state.todoList)
 
   const displayTodoList = useMemo(() => {
     // conditional todos display for either category or status or both

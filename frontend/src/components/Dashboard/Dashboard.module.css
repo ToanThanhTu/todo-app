@@ -4,6 +4,12 @@
   gap: 20px;
 }
 
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
 .features {
   margin-left: 24px;
   list-style: disc;
@@ -19,12 +25,6 @@
 .h1 {
   font-size: 1.5rem;
   margin: 0;
-}
-
-.dashboard {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
 }
 
 .introAndTodoList {
@@ -92,4 +92,19 @@
   border-radius: 12px;
   font-size: 1.2rem;
   color: #828282;
+}
+
+@media (max-width: 1268px) {
+  .dashboard {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .features {
+    margin-left: 0;
+  }
+
+  .progressGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
 }

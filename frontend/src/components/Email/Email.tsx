@@ -9,7 +9,7 @@ export default function ContactEmail({ name, email, message }: ContactFormModel)
           You have a new message from {name} ({email}):
         </h1>
 
-        <article className={styles.article}>
+        <article>
           <p>{message}</p>
         </article>
 

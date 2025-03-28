@@ -47,7 +47,7 @@ export interface Filter {
 }
 
 export enum StatusFilterSelect {
-  ALL = "All",
+  ALL = "All Statuses",
   ACTIVE = "Active",
   COMPLETED = "Completed",
   CANCELLED = "Cancelled",

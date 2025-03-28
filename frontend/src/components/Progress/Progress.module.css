@@ -1,5 +1,6 @@
 .progressContainer {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: center;
   justify-content: center;
   gap: 32px;
@@ -10,6 +11,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.circleContainer {
+  width: 80px;
+  height: 80px;
 }
 
 .statusContainer {
@@ -23,4 +29,48 @@
   text-align: center;
   font-size: 0.9rem;
   font-weight: 600;
+}
+
+@media (max-width: 420px) {
+  .progressContainer {
+    gap: 16px;
+  }
+
+  .circleContainer {
+    width: 60px;
+    height: 60px;
+  }
+
+  .statusContainer {
+    gap: 4px;
+  }
+
+  .status {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 376px) {
+  .statusContainer {
+    gap: 2px;
+  }
+
+  .status {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .statusContainer {
+    gap: 1px;
+  }
+
+  .circleContainer {
+    width: 50px;
+    height: 50px;
+  }
+
+  .status {
+    font-size: 0.6rem;
+  }
 }

@@ -1,3 +1,7 @@
+.sideBarMobileContainer {
+  display: none;
+}
+
 .sideBar {
   display: flex;
   flex-direction: column;
@@ -56,7 +60,35 @@
 }
 
 @media (max-width: 580px) {
-  .sideBarDesktopContainer {
-    display: none;
+  .sideBarMobileContainer {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 70%;
+    max-width: 320px;
+    z-index: 99;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .sideBar {
+    border-radius: 0 12px 0 0;
+  }
+
+  .menuBtn {
+    display: block;
+    position: absolute;
+    top: 72px;
+    right: -52px;
+    background-color: var(--primary);
+    border-radius: 0 12px 12px 0;
+    box-shadow: 3px 2px 4px hsla(0, 0%, 0%, 0.301);
+    z-index: 1;
+    padding: 8px 16px;
+    color: var(--foreground-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: left;
   }
 }

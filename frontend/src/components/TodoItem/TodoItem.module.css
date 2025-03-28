@@ -43,3 +43,13 @@
 .statusBarContainerHidden {
   display: none;
 }
+
+.statusText {
+  display: block;
+}
+
+@media (max-width: 420px) {
+  .statusText {
+    display: none;
+  }
+}

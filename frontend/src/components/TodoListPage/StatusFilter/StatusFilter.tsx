@@ -30,28 +30,25 @@ function StatusFilter({
                 : {}
             }
           >
-            {value}
+            {value === StatusFilterSelect.ALL ? "All" : value}
           </button>
         ))}
       </div>
 
       {/* Status Select for Smaller Screens */}
-      <div className={styles.dropdown}>
-        <label htmlFor="status-dropdown">Status:</label>
-        <select
-          name="status"
-          id="status-dropdown"
-          onChange={(event) => setFilter(event.target.value, "status")}
-          value={currentStatus || StatusFilterSelect.ACTIVE}
-        >
-          <option value="ALL">ALL</option>
-          {Object.entries(StatusFilterSelect).map(([status, value]) => (
-            <option key={status} value={value}>
-              {value}
-            </option>
-          ))}
-        </select>
-      </div>
+      <select
+        name="status"
+        id="status-dropdown"
+        onChange={(event) => setFilter(event.target.value, "status")}
+        value={currentStatus || StatusFilterSelect.ACTIVE}
+        className={styles.dropdown}
+      >
+        {Object.entries(StatusFilterSelect).map(([status, value]) => (
+          <option key={status} value={value}>
+            {value}
+          </option>
+        ))}
+      </select>
     </>
   )
 }

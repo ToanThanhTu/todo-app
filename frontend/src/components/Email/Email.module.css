@@ -1,0 +1,42 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+  padding: 32px;
+  background-color: var(--background-secondary);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  background-color: var(--background);
+  padding: 32px;
+  border-radius: 28px;
+}
+
+.h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.btn {
+  background-color: var(--primary);
+  color: var(--foreground-secondary);
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: var(--background);
+  color: var(--primary);
+  outline: 1px solid var(--primary);
+}

@@ -1,5 +1,5 @@
 import { Category } from "@/types"
-import categoryFilterStyles from "./CategoryFilter.module.css"
+import styles from "./CategoryFilter.module.css"
 import { useState } from "react"
 
 function CategoryFilter({
@@ -17,19 +17,14 @@ function CategoryFilter({
   }
 
   return (
-    <>
-      <label htmlFor="categories" className={categoryFilterStyles.label}>
-        Category:
-      </label>
-      <select name="categories" id="categories" onChange={handleOnChange} value={currentCategory}>
-        <option value="">All Categories</option>
-        {categories.map((category) => (
-          <option key={category.id} value={category.id}>
-            {category.name}
-          </option>
-        ))}
-      </select>
-    </>
+    <select name="categories" id="categories" onChange={handleOnChange} value={currentCategory} className={styles.dropdown}>
+      <option value="">All Categories</option>
+      {categories.map((category) => (
+        <option key={category.id} value={category.id}>
+          {category.name}
+        </option>
+      ))}
+    </select>
   )
 }
 

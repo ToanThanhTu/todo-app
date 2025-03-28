@@ -60,7 +60,7 @@ export default function Categories() {
                     className={styles.deleteBtn}
                     onClick={() => handleDeleteCategory(category.id)}
                   >
-                    Delete Category
+                    Delete
                   </button>
                 }
               />

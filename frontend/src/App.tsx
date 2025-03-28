@@ -1,5 +1,5 @@
-import { useEffect } from "react"
-import { Route, Routes, useMatch } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Route, Routes } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "@/hooks"
 import { initializeTodoList } from "./reducers/todoListReducer"
 import { initializeCategories } from "./reducers/categoryReducer"
@@ -7,15 +7,17 @@ import { initializeUser } from "./reducers/userReducer"
 import SideBar from "./components/SideBar/SideBar"
 import TodoList from "./components/TodoListPage/TodoList"
 import Contact from "./components/Contact/Contact"
-import TodoItemPage from "@/components/TodoItemPage/TodoItemPage"
 import { Toaster } from "@/components/shadcn/sonner"
 import { toast } from "sonner"
 import Dashboard from "./components/Dashboard/Dashboard"
 import Footer from "@/components/Footer/Footer"
 import Header from "@/components/Header/Header"
 import Categories from "@/components/Categories/Categories"
+import SideBarMobile from "@/components/SideBar/SideBarMobile"
 
 export default function App() {
+  const [displaySideBar, setDisplaySideBar] = useState(false)
+
   const dispatch = useAppDispatch()
   const loggedUser = useAppSelector((state) => state.user)
 
@@ -34,10 +36,17 @@ export default function App() {
     }
   }, [dispatch, loggedUser.id])
 
-  // Get the todo item object from the id in the url
-  const todoList = useAppSelector((state) => state.todoList)
-  const match = useMatch("/todos/:id")
-  const todoItem = match ? todoList.find((item) => item.id === match.params.id) : null
+  useEffect(() => {
+    if (displaySideBar) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "auto"
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"
+    }
+  }, [displaySideBar])
 
   return (
     <main>
@@ -47,21 +56,27 @@ export default function App() {
         <div className="container">
           <SideBar user={loggedUser} />
 
+          <SideBarMobile
+            user={loggedUser}
+            displaySideBar={displaySideBar}
+            setDisplaySideBar={setDisplaySideBar}
+          />
+
           <section className="content">
             <Routes>
               <Route path="/contacts" element={<Contact />} />
               <Route path="/categories" element={<Categories />} />
-              <Route path="/todos/:id" element={<TodoItemPage todoItem={todoItem} />} />
-              <Route path="/todos" element={<TodoList todoList={todoList} />} />
-              <Route path="/" element={<Dashboard user={loggedUser} todoList={todoList} />} />
+              <Route path="/todos" element={<TodoList />} />
+              <Route path="/" element={<Dashboard user={loggedUser} />} />
             </Routes>
             <Footer />
           </section>
         </div>
-
       </div>
 
       <Toaster richColors />
+
+      {displaySideBar && <div className="overlay" onClick={() => setDisplaySideBar(!displaySideBar)} />}
     </main>
   )
 }

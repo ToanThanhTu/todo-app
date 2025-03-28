@@ -3,7 +3,6 @@ import SmartphoneIcon from "@mui/icons-material/Smartphone"
 import LinkedInIcon from "@mui/icons-material/LinkedIn"
 import GitHubIcon from "@mui/icons-material/GitHub"
 import ContactSupportIcon from "@mui/icons-material/ContactSupport"
-
 import styles from "./Contact.module.css"
 import React from "react"
 import { contacts } from "../../../data/contacts"

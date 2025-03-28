@@ -39,7 +39,7 @@ export default function Todo({ todoItem }: PropsWithChildren<Props>) {
       </div>
 
       <div className={isExpanded ? styles.statusBarContainer : styles.statusBarContainerHidden}>
-        <span>Status:</span>
+        <span className={styles.statusText}>Status:</span>
         <StatusBar currentStatus={todoItem.status} handleClick={handleClick} />
       </div>
     </li>

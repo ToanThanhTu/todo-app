@@ -7,3 +7,9 @@
     display: inline;
   }
 }
+
+@media (max-width: 768px) {
+  .dropdown {
+    font-size: 0.9rem;
+  }
+}

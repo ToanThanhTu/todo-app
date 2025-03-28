@@ -4,10 +4,10 @@
   margin: 24px 0;
 }
 
-.navBar {
+.navDesktopSideBar {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: stretch;
   justify-content: center;
   gap: 20px;
 }
@@ -22,67 +22,10 @@
   padding: 12px;
   margin: 0 12px;
   border-radius: 12px;
-  width: 180px;
 }
 
 .navItem:hover {
   cursor: pointer;
   background-color: var(--background);
   color: var(--primary);
-}
-
-.navMenu {
-  display: none;
-}
-
-.menuBtn {
-  display: none;
-}
-
-.appName {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .navContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-  }
-
-  .navBar {
-    display: none;
-  }
-
-  .menuBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
-    height: 20px;
-    background-color: var(--background);
-    padding: 5px 20px;
-  }
-
-  .appName {
-    display: block;
-    margin: 0 20px;
-    font-style: italic;
-  }
-
-  .navMenu {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 25px;
-    right: 0;
-    background-color: var(--background);
-    z-index: 99;
-  }
-
-  .navItem:nth-child(even) {
-    background-color: var(--secondary-gray);
-  }
 }

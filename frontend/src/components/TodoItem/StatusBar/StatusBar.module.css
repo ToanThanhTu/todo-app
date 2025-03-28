@@ -28,3 +28,16 @@
   border-radius: 44px;
   padding: 4px 12px;
 }
+
+@media (max-width: 768px) {
+  .statusBar {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .statusBar {
+    font-size: 0.6rem;
+    gap: 2px;
+  }
+}
