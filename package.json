@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"cd backend && pnpm run dev\" \"cd frontend && pnpm run dev\" "
+    "dev": "concurrently \"cd backend && pnpm run dev\" \"cd frontend && pnpm run dev\" ",
+    "test": "playwright test",
+    "test:report": "playwright show-report"
   },
   "author": "Thanh Toan Tu",
   "license": "ISC",
